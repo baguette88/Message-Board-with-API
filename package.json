@@ -19,16 +19,16 @@
     "express-session": "^1.17.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.9.20"
-  }
-  // "devDependencies": {},
-  // "repository": {
-  //   "type": "git",
-  //   "url": "git+https://github.com/jbrown7407/delta.git"
-  // },
-  // "bugs": {
-  //   "url": "https://github.com/jbrown7407/delta/issues"
-  // },
-  // "homepage": "https://github.com/jbrown7407/delta#readme",
-  // "description": ""
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbrown7407/delta.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jbrown7407/delta/issues"
+  },
+  "homepage": "https://github.com/jbrown7407/delta#readme",
+  "description": ""
 }
 

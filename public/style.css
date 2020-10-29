@@ -138,11 +138,13 @@ body {margin:0;}
 }
 
 .navbarTop {
+  padding-top: -20px;
     overflow: hidden;
     background-color: rgb(94, 197, 238);;
     position: fixed;
     top: 0;
     width: 100%;
+    display: block;
   }
 
 .navbar a {
@@ -152,7 +154,7 @@ body {margin:0;}
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 24px;
 }
 
 .navbar a:hover {
@@ -179,7 +181,7 @@ head {
   background-color: #4CAF50;
   color: white;
   padding: 16px;
-  font-size: 16px;
+  font-size: 24px;
   border: none;
   float: right'
 }

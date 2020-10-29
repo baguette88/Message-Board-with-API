@@ -4,21 +4,27 @@
         <meta charset="utf-8">
         <title></title>
     </head>
-    <!-- <link rel="stylesheet" href="/normalize.css"> -->
-    <!-- <link rel="stylesheet" href="/skeleton.css"> -->
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/skeleton.css">
     <link rel="stylesheet" href="/style.css">
     
     <body>
-        <div class="container">
+       
           
-
+       
+           
+        <td>         </td>  
         <ul>
+                 <%  let messageTotal = 0 %>
             <% for(let i = 0; i < allMessages.length; i++) { %>
+                   <!-- <%  messageTotal = messageTotal + 1 %>
                 <%    if (i%2) {  %>
                 <div class="container darker">
                     <%    } else { %>
                         <div class="container">
                  <%   }  %>
+
+                <div class="container">  
                
                 <li>
          <!-- LI PRINTED EACH LOOP             -->
@@ -42,9 +48,9 @@
                     <input type="submit" value="DELETE"/>
                 </form>
                
-                
-            </li>
             </div>
+            </li>
+           
             
             <% } %>
         </ul>
@@ -53,6 +59,7 @@
         <a href="#news">Contacts</a>
         <a href="#contact">Preferences</a>
         <a href="/messages/boards">Change Boards</a></h2>
+        Total Messages: <%= messageTotal %>
        
        </div>
     </nav>
