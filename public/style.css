@@ -129,12 +129,14 @@ form:-ms-input-placeholder {
 body {margin:0;}
 
 .navbar {
-  overflow: hidden;
+  overflow: w;
   background-color:rgb(94, 197, 238);
   color: black;
   position: fixed;
   bottom: 0;
   width: 100%;
+  padding-top: 5px; 
+  padding-bottom: -30px; 
 }
 
 .navbarTop {

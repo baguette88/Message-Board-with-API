@@ -16,17 +16,17 @@
         <td>         </td>  
         <ul>
                  <%  let messageTotal = 0 %>
-            <% for(let i = 0; i < allMessages.length; i++) { %>
-                   <!-- <%  messageTotal = messageTotal + 1 %>
-                <%    if (i%2) {  %>
-                <div class="container darker">
-                    <%    } else { %>
-                        <div class="container">
-                 <%   }  %>
+                 <% for(let i = 0; i < allMessages.length; i++) { %>
+                    <!-- <%  messageTotal = messageTotal + 1 %>
+                 <%    if (i%2) {  %>
+                 <div class="container darker">
+                     <%    } else { %>
+                         <div class="container">
+                  <%   }  %>
 
-                <div class="container">  
+        <div class="container">  
                
-                <li>
+                <li>               <i class="fas fa-ghost"></i>
          <!-- LI PRINTED EACH LOOP             -->
                 <%    if (i%2) {  %>
                     <img src="icon2.png" style="float:left" alt="i%2 =true">
@@ -35,8 +35,8 @@
               <%   }  %>
 
 
-                    
-           
+              <i class="fas fa-ghost"></i>
+             
                 <a href="/messages/<%=allMessages[i].id %>"> <span class="time-right">   <%=allMessages[i].createdAt; %> </span>
                     <%=allMessages[i].user; %>: 
                 </a> <br>
@@ -62,13 +62,14 @@
         Total Messages: <%= messageTotal %>
        
        </div>
-    </nav>
+
         <div class="navbar">
 
-      <br>
+     
             <form action="/messages" method="POST" >
                 User: <input type="text" name="user" /><br/>
-                Message: <input type="text" name="message" /> <span class="highlighter">  
+                Message: <input type="text" name="message" /> 
+                <span class="highlighter">  
                       <input type="submit" name="" value="Send"/></span>  
                 <!-- SuperUser: <input type="checkbox" name="superUser" /><br/> -->
 
