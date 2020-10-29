@@ -23,11 +23,11 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jbrown7407/messageApp.git"
+    "url": "git+https://github.com/jbrown7407/delta.git"
   },
   "bugs": {
-    "url": "https://github.com/jbrown7407/messageApp/issues"
+    "url": "https://github.com/jbrown7407/delta/issues"
   },
-  "homepage": "https://github.com/jbrown7407/messageApp#readme",
+  "homepage": "https://github.com/jbrown7407/delta#readme",
   "description": ""
 }
