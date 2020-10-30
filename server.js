@@ -29,7 +29,7 @@ app.use(methodOverride('_method'))
 
 //Port for HEROKU_______________
 // Allow use of Heroku's port or your own local port, depending on the environment
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT 
 const PORT2 = process.env.PORT2 || 3001   //process.env.PORT || 3001
 
 
