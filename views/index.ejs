@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/normalize.css">
     <link rel="stylesheet" href="/skeleton.css">
     <link rel="stylesheet" href="/style.css">
-     <script src="/home/jbrown7407/Desktop/Projects/delta/scripts/app.js"></script> 
+     <!-- <script src="/home/jbrown7407/Desktop/Projects/delta/scripts/app.js"></script>  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -17,9 +17,13 @@
 
   </head>
 
-  <br><br>
+  <body>
 
-        <td>         </td>  
+
+  
+
+  <br>
+
         <ul>
                  <%  let messageTotal = 0 %>
                  <%  let $count %>
@@ -47,17 +51,18 @@
           
               <a href="/messages/<%=allMessages[i].id %>">        <%=allMessages[i].user; %>:   </a>
               <div class="like" style="float:right">
-                <button style= "color:red"><form action="/messages/<%= allMessages[i].id %>?_method=PATCH" method="POST">
+                <button style= "color:red">
+                    <form action="/messages/<%= allMessages[i].id %>?_method=PATCH" method="POST">
                     <i class="fas fa-heart"></i><input type="submit" value="Like" /> </form > 
-                   </button>
-             
+                </button>
               </div>
+
               <%=allMessages[i].message; %> 
          
                     <span class="time-right">  <br>
                      <%=allMessages[i].createdAt; %> </span>
                    
-                </a>
+                
                 <% allMessages[i].likes %> <br>
               LIKES=  <%= allMessages[i].likes; %>
             
@@ -75,9 +80,6 @@
                     <input type="submit" value="Like"  />
         </form>
 
-
-
-    
 
                 <form action="/messages/<%= allMessages[i].id %>?_method=DELETE" method="POST">
                     <input type="submit" value="DELETE"  />
@@ -120,6 +122,7 @@
           </div>
           
       
+
 
    
 
