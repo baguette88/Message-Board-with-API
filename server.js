@@ -15,7 +15,7 @@ const methodOverride = require('method-override')
 
 
 //SOCKET
-http = require("http").createServer();
+let http = require("http").createServer();
 const io = require("socket.io")(http);
 
 
