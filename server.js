@@ -33,7 +33,7 @@ app.use(methodOverride('_method'))
 //Port
 //___________________
 // Allow use of Heroku's port or your own local port, depending on the environment
-const PORT = process.env.PORT 
+const PORT = process.env.PORT || 3000
 const PORT2 = process.env.PORT2 || 3001   //process.env.PORT || 3001
 
 http.listen(PORT2, () => {
@@ -50,7 +50,7 @@ io.on("connection", (socket) => {
 })
 
 
-const PORT = process.env.PORT || 3000;
+
 
 //___________________
 //Database
