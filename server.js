@@ -155,6 +155,19 @@ app.delete('/messages/:id', (req, res) => {
   })
 })
 
+////CHANGE LIKES
+app.patch('/messages/:id', (req,res) => {
+  console.log(req.body)
+  Message.findByIdAndUpdate(req.params.id, {$inc: {'likes': +1}}, (err) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.redirect(`/messages`)
+    }
+  })
+})
+
+
 // the app running the server
 app.listen(PORT, () => {
   console.log('listening')
