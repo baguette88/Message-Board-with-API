@@ -156,6 +156,6 @@ app.delete('/messages/:id', (req, res) => {
 })
 
 // the app running the server
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('listening')
 })
