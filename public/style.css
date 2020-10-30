@@ -297,14 +297,14 @@ p { padding-left: 10px; }
   border-radius: 3px;
   border: 1px solid;
   display: inline-block;
-  height: 18px;
+  height: 25px;
   line-height: 18px;
   padding: 0 8px;
   position: relative;
 
   font-size: 12px;
   text-decoration: none;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
 /*
  * Counter button style
@@ -314,7 +314,7 @@ p { padding-left: 10px; }
 .btn-counter:hover:after { text-shadow: none; }
 .btn-counter:after {
   border-radius: 3px;
-  border: 1px solid #d3d3d3;
+  border: 1px solid #050505;
   background-color: rgb(158, 230, 248);
   padding: 0 8px;
   color: #777;
@@ -330,7 +330,7 @@ p { padding-left: 10px; }
   filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476, sizingMethod='auto expand');
 
   background-color: #eee;
-  border: 1px solid #d3d3d3;
+  border: 1px solid #000000;
   border-right: 0;
   border-top: 0;
   content: '';
