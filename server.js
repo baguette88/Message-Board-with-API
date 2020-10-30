@@ -32,6 +32,10 @@ app.use(methodOverride('_method'))
 const PORT = process.env.PORT 
 const PORT2 = process.env.PORT2 || 3001   //process.env.PORT || 3001
 
+http.listen(PORT2, () => {
+  console.log("server is listening on: " +PORT2+" ...SOCKET...")
+})
+
 
 //IO
 io.on("connection", (socket) => {
@@ -41,9 +45,7 @@ io.on("connection", (socket) => {
   console.log("NEW CLIENT CONNECTED!")
 })
 
-http.listen(PORT2, () => {
-  console.log("server is listening on: " + PORT2 +" ...SOCKET...")
-})
+
 
 //Database
 
@@ -189,3 +191,4 @@ app.patch('/messages/:id', (req,res) => {
 app.listen(PORT, () => {
   console.log('listening')
 })
+
