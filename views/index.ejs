@@ -16,25 +16,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
   </head>
-  <script>
-    var socket = io()
-  </script>
-  
+
   <body>
-    
-<script src="/socket.io/socket.io.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
-<script>
-  $(function () {
-    var socket = io();
-    $('form').submit(function(e) {
-      e.preventDefault(); // prevents page reloading
-      socket.emit('chat message', $('#m').val());
-      $('#m').val('');
-      return false;
-    });
-  });
-</script>
+
 
   
 
@@ -132,7 +116,7 @@
      
             <form action="/messages" method="POST" >
                 User: <input type="text" name="user" /><br/>
-                Message: <input type="text" name="message" id="m" /> 
+                Message: <input type="text" name="message" /> 
                 <span class="highlighter">  
                       <input type="submit" name="" value="Send"/></span>  
                 <!-- SuperUser: <input type="checkbox" name="superUser" /><br/> -->
