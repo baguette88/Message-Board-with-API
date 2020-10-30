@@ -22,6 +22,7 @@
   
   <body>
    
+
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
@@ -136,17 +137,20 @@
 
         <div class="navbar">
 
-       
-                <ul id="messages"></ul>
-                <form action="/messages" method="POST">
-                 USER <input type="text" name="user" autocomplete="off" /><button>Send</button>
-                  Message: <input type="text" name="message" /> <br>
-                  <input type="submit" name="" value="OLDSend"/></span>  
-                </form>
-         
-          
+     
+            <form action="/messages" method="POST" >
+                User: <input type="text" name="user" /><br/>
+                Message: <input type="text" name="message" /> 
+                <span class="highlighter">  
+                      <input type="submit" name="" value="Send"/></span>  
+                <!-- SuperUser: <input type="checkbox" name="superUser" /><br/> -->
 
-    
+                <form action="/messages" method="POST">
+                    USER <input type="text" name="user" autocomplete="off" /><button>Send</button>
+                     Message: <input type="text" name="message" /> <br>
+                     <input type="submit" name="" value="newSend"/></span>  
+                   </form>
+                
           </div>
           
       
