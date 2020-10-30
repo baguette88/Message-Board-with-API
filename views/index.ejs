@@ -21,13 +21,14 @@
   </script>
   
   <body>
+      <div class="navbar">
     <ul id="messages"></ul>
     <form action="/messages" method="POST">
      USER <input type="text" name="user" autocomplete="off" /><button>Send</button>
       Message: <input type="text" name="message" /> <br>
       <input type="submit" name="" value="OLDSend"/></span>  
     </form>
-  </body>
+ </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
