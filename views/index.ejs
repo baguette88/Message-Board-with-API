@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/normalize.css">
     <!-- <link rel="stylesheet" href="/skeleton.css"> -->
     <link rel="stylesheet" href="/style.css">
-     <script src="/public/app.js"></script> 
+     <script src="/app.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -18,17 +18,7 @@
   </head>
 
 
-<script>
-  console.log("app.js connected")
 
-//   const io= require("socket.io-client")
-  
-  let socket = io.connect("http://localhost:3001")
-   
-  socket.on("welcome", (data) => {
-  console.log("Socket Received:", data)
-  })
-</script>
   
   
   
