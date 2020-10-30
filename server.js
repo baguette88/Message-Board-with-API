@@ -4,23 +4,18 @@
 //npm i ejs
 //npm i mongoose
 ///DELETE npm i method-override
-
 //npm install express-session
 //npm install dotenv
-
 
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 
-
-// PORT: 3000
-
 // middleware to help with the form submission
 // app.use(express.urlencoded({extended:false}))
 // app.use(methodOverride('_method'))
-///
+
 
 // app.use(express.urlencoded({extended: false})); //  recognize the incoming object as strings or arrays.
 
@@ -28,8 +23,6 @@ app.use(express.json());  // allows us to recognize the incoming request as a JS
 app.use(express.urlencoded({extended: false})); //  recognize the incoming object as strings or arrays.
 app.use(express.static(__dirname + '/public'));  // ???
 app.use(methodOverride('_method'))
-
-
 
 //Port
 //___________________
@@ -67,8 +60,6 @@ mongoose.connection.once('open', ()=> {
 
 // importing the message model
 const Message = require('./models/messages.js')
-
-
 
 // ROUTES //
 ///////////
@@ -118,7 +109,6 @@ app.post('/messages/', (req, res)=>{    //Post is an express method to POST
     res.redirect('/messages');
   })
 })
-
 
 /////////////
 /// edit ////
