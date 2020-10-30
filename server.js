@@ -12,12 +12,18 @@ const app = express()
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 
+<<<<<<< HEAD
 
 
 //SOCKET
-http = require("http").createServer();
+let http = require("http").createServer();
 const io = require("socket.io")(http);
 
+=======
+// middleware to help with the form submission
+// app.use(express.urlencoded({extended:false}))
+// app.use(methodOverride('_method'))
+>>>>>>> parent of f9c9089... Socket Attempt 1
 
 
 // app.use(express.urlencoded({extended: false})); //  recognize the incoming object as strings or arrays.
@@ -27,10 +33,16 @@ app.use(express.urlencoded({extended: false})); //  recognize the incoming objec
 app.use(express.static(__dirname + '/public'));  // ???
 app.use(methodOverride('_method'))
 
-//Port for HEROKU_______________
+//Port
+//___________________
 // Allow use of Heroku's port or your own local port, depending on the environment
-const PORT = process.env.PORT || 3000;
+<<<<<<< HEAD
+const PORT = process.env.PORT 
 const PORT2 = process.env.PORT2 || 3001   //process.env.PORT || 3001
+
+http.listen(PORT2, () => {
+  console.log("server is listening on: " +PORT2+" ...SOCKET...")
+})
 
 
 //IO
@@ -41,12 +53,14 @@ io.on("connection", (socket) => {
   console.log("NEW CLIENT CONNECTED!")
 })
 
-http.listen(PORT2, () => {
-  console.log("server is listening on: " + PORT2 +" ...SOCKET...")
-})
 
+=======
+const PORT = process.env.PORT || 3000;
+>>>>>>> parent of f9c9089... Socket Attempt 1
+
+//___________________
 //Database
-
+//___________________
 // How to connect to the database either via heroku or locally
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ 'messages';
 
@@ -57,7 +71,7 @@ const db = mongoose.connection
 ////////
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
-db.on('connected', () => console.log('3000... mongo connected: ', MONGODB_URI));
+db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 // open the connection to mongo
@@ -74,9 +88,7 @@ mongoose.connection.once('open', ()=> {
 });
 
 // importing the message model
-const Message = require('./models/messages.js');
-const { Socket } = require('socket.io-client');
-const { hasUncaughtExceptionCaptureCallback } = require('process');
+const Message = require('./models/messages.js')
 
 // ROUTES //
 ///////////
@@ -185,7 +197,8 @@ app.patch('/messages/:id', (req,res) => {
 })
 
 
-// the app running the server. HOW DO I REPLACE THIS WITH SOCKET PROPERLY
+// the app running the server
 app.listen(PORT, () => {
   console.log('listening')
 })
+

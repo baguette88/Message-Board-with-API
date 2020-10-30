@@ -3,13 +3,28 @@ console.log("app.js connected")
 const io= require("socket.io-client")
 
 let socket = io.connect("http://localhost:3001")
+
  
 socket.on("welcome", (data) => {
 console.log("Socket Received:", data)
+
 })
 
 
 
+  
+
+
+
+//   $(function () {
+//     var socket = io();
+//     $('form').submit(function(e) {
+//       e.preventDefault(); // prevents page reloading
+//       socket.emit('chat message', $('#m').val());
+//       $('#m').val('');
+//       return false;
+//     });
+//   });
 
 
 
