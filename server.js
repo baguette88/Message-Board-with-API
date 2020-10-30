@@ -12,12 +12,15 @@ const app = express()
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 
+<<<<<<< HEAD
 
 
 //SOCKET
 let http = require("http").createServer();
 const io = require("socket.io")(http);
 
+=======
+>>>>>>> parent of f9c9089... Socket Attempt 1
 // middleware to help with the form submission
 // app.use(express.urlencoded({extended:false}))
 // app.use(methodOverride('_method'))
@@ -33,6 +36,7 @@ app.use(methodOverride('_method'))
 //Port
 //___________________
 // Allow use of Heroku's port or your own local port, depending on the environment
+<<<<<<< HEAD
 const PORT = process.env.PORT || 3000
 const PORT2 = process.env.PORT2 || 3001   //process.env.PORT || 3001
 
@@ -52,6 +56,10 @@ io.on("connection", (socket) => {
 
 
 
+=======
+const PORT = process.env.PORT || 3000;
+
+>>>>>>> parent of f9c9089... Socket Attempt 1
 //___________________
 //Database
 //___________________
