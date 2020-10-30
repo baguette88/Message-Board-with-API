@@ -1,5 +1,21 @@
 console.log("app.js connected")
 
+const io= require("socket.io-client")
+
+let socket = io.connect("http://localhost:3001")
+ 
+socket.on("welcome", (data) => {
+console.log("Socket Received:", data)
+})
+
+
+
+
+
+
+
+
+
 // const baseURL = `http://www.omdbapi.com/?`
 // const apiKey = `apikey=53aa2cd6` //backticks
 // // ff05b1a8 MINE
