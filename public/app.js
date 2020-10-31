@@ -80,7 +80,7 @@ $(function(){
     //make connection
  var socket = io.connect('http://localhost:3001')
 
- //buttons and inputs
+ //buttons and input
  var message = $("#message")
  var username = $("#username")
  var send_message = $("#send_message")
