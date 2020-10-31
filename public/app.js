@@ -87,6 +87,7 @@ $(function(){
  var send_username = $("#send_username")
  var chatroom = $("#chatroom")
  var feedback = $("#feedback")
+ var ulz = $('.ulz')
 
  //Emit message
  send_message.click(function(){
@@ -97,7 +98,7 @@ $(function(){
  socket.on("new_message", (data) => {
      feedback.html('');
      message.val('');
-     chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
+     chatroom.append("<li class='message'>" + data.username + ": " + data.message + "</li>")
  })
 
  //Emit a username
