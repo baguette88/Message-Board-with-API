@@ -1,17 +1,56 @@
 console.log("app.js connected")
 
-window.onscroll = function() {myFunction()};
+// window.onscroll = function() {myFunction()};
 
-var navbar = document.getElementById("navbar");
-var sticky = navbar.offsetBottom;
+// var navbar = document.getElementById("navbar");
+// var sticky = navbar.offsetBottom;
 
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}
+// function myFunction() {
+//   if (window.pageYOffset >= sticky) {
+//     navbar.classList.add("sticky")
+//   } else {
+//     navbar.classList.remove("sticky");
+//   }
+// }
+$(function(){
+   	//make connection
+	var socket = io.connect('http://localhost:3000')
+
+	//buttons and inputs
+	var message = $("#message")
+	var username = $("#username")
+	var send_message = $("#send_message")
+	var send_username = $("#send_username")
+	var chatroom = $("#chatroom")
+	var feedback = $("#feedback")
+
+	//Emit message
+	send_message.click(function(){
+		socket.emit('new_message', {message : message.val()})
+	})
+
+	//Listen on new_message
+	socket.on("new_message", (data) => {
+		feedback.html('');
+		message.val('');
+		chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
+	})
+
+	//Emit a username
+	send_username.click(function(){
+		socket.emit('change_username', {username : username.val()})
+	})
+
+	//Emit typing
+	message.bind("keypress", () => {
+		socket.emit('typing')
+	})
+
+	//Listen on typing
+	socket.on('typing', (data) => {
+		feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
+	})
+});
 // const baseURL = `http://www.omdbapi.com/?`
 // const apiKey = `apikey=53aa2cd6` //backticks
 // // ff05b1a8 MINE

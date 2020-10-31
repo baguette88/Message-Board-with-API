@@ -4,7 +4,7 @@ const messageSchema = new mongoose.Schema({
   message:   { type: String, required: true },
   user:  { type: String, required: true },
   likes:  { type: Number, default: 0 },
-  // level:  { type: String, required: true },
+  //  level:  { type: Number, default: 1 },
   // superUser: Boolean,
 }, {timestamps: true});
 
