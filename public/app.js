@@ -1,5 +1,17 @@
 console.log("app.js connected")
 
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetBottom;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
 // const baseURL = `http://www.omdbapi.com/?`
 // const apiKey = `apikey=53aa2cd6` //backticks
 // // ff05b1a8 MINE

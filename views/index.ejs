@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="/normalize.css">
     <link rel="stylesheet" href="/skeleton.css">
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-4ZPLezkTZTsojWFhpdFembdzFudphhoOzIunR1wH6g1WQDzCAiPvDyitaK67mp0+" crossorigin="anonymous">
-     <!-- <script src="/home/jbrown7407/Desktop/Projects/delta/scripts/app.js"></script> -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-4ZPLezkTZTsojWFhpdFembdzFudphhoOzIunR1wH6g1WQDzCAiPvDyitaK67mp0+" crossorigin="anonymous"> -->
+     <script src="/app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="lib/css/emoji.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- <link href="lib/css/emoji.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
   </head>
@@ -23,7 +23,7 @@
       
         <ul>
                  <%  let messageTotal = 0 %>
-           
+                 <%  let likesTotal = 0 %>
 
                  <% for(let i = 0; i < allMessages.length; i++) { %>
     <li>   <!-- LI PRINTED EACH LOOP    -->
@@ -45,9 +45,10 @@
 
               <a href="/messages/<%=allMessages[i].id %>">        <%=allMessages[i].user; %>:   </a>
               <div class="like" style="float:right">
-                <button style= "color:red"><form action="/messages/<%= allMessages[i].id %>?_method=PATCH" method="POST">
-                    <input type="submit" value="Like" /><i class="fas fa-heart"></i> <%= allMessages[i].likes; %></form > 
-                   </button>
+               <form action="/messages/<%= allMessages[i].id %>?_method=PATCH" method="POST">
+                <button style= "color:red">       <input type="submit" value="Like" /><i class="fas fa-heart"></i> <%= allMessages[i].likes; %> </button></form > 
+              
+                   
 
               </div>
               <%=allMessages[i].message; %> <br>
@@ -59,12 +60,9 @@
                 <% allMessages[i].likes %> <br>
               
 
-
-        
             <br>
 
-          
-
+        
              <button>
                 <form action="/messages/<%= allMessages[i].id %>?_method=DELETE" method="POST">
                     <input type="submit" value="DELETE"  />
@@ -84,7 +82,7 @@
         <a href="#news">Contacts</a>
         <a href="#contact">Preferences</a>
         <a href="/messages/boards">Change Boards</a></h2>
-        Total Messages: <%= messageTotal %>
+        Total Messages: <%= messageTotal %>   Total Likes: <%= likesTotal %>
 
        </div>
 
@@ -93,11 +91,11 @@
 
             <form action="/messages" method="POST" >
                 User: <input type="text" name="user" /><br/>
-                Message: <input type="text" name="message" />
+                Message: <input type="text" name="message" maxlength="250" />
                 <span class="highlighter">
                       <input type="submit" name="" value="Send"/></span>
                 <!-- SuperUser: <input type="checkbox" name="superUser" /><br/> -->
-
+            
 
           </div>
     </body>
