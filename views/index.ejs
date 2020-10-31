@@ -26,7 +26,7 @@
   </head>
 
   <br><br>
-  <section id="chatroom"></section>
+
       
         <ul>
                  <%  let messageTotal = 0 %>
@@ -61,7 +61,7 @@
 
               </div>
               <%=allMessages[i].message; %> <br>
-              <section id="feedback"></section>
+              
                     <span class="time-right">  <br>
                      <%=allMessages[i].createdAt; %> </span>
 
@@ -108,6 +108,8 @@
                 <!-- SuperUser: <input type="checkbox" name="superUser" /><br/> -->
             
 
+<!-- 
+                <section id="chatroom">
                 <section>
                     <div id="change_username">
                   <input id="username" type="text" />
@@ -123,10 +125,12 @@
                     <input id="message" class="vertical-align" type="text" />
                     <button id="send_message" class="vertical-align" type="button">Send</button>
                   </section>
-              
+                  <section id="feedback"></section> -->
+
+
                   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
                   <script src="app.js"></script>
-
+                </section>
 
           </div>
     </body>
