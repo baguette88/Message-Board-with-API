@@ -50,7 +50,7 @@
                    </button>
 
               </div>
-              <%=allMessages[i].message; %>
+              <%=allMessages[i].message; %> <br>
 
                     <span class="time-right">  <br>
                      <%=allMessages[i].createdAt; %> </span>
@@ -60,7 +60,7 @@
               
 
 
-              <a href="/messages/<%=allMessages[i].id %>/edit">Edit</a>  <br>
+        
             <br>
 
           
@@ -68,7 +68,7 @@
              <button>
                 <form action="/messages/<%= allMessages[i].id %>?_method=DELETE" method="POST">
                     <input type="submit" value="DELETE"  />
-                </form> </button>
+                </form> </button>  <span class="floaty" style="float:right">    <a href="/messages/<%=allMessages[i].id %>/edit">Edit</a></span>   
 
             </div>
 
@@ -100,10 +100,5 @@
 
 
           </div>
-
-    
-
-
-
     </body>
 </html>
