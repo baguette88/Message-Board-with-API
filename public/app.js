@@ -1,4 +1,68 @@
 console.log("app.js connected")
+$(document).ready(function(){
+    let cl = (value) => console.log(value);
+    cl("Jquery Active")
+    
+    // const $div = $('<div>')
+    // $($div).addClass('title')
+    // $('body').append($div)
+    // $($div).text("Div Example")
+   // $($div).style.color("blue")
+//JQUERY HERE
+
+const $tellplayer=  document.getElementById("tellPlayer")
+const $gameScene1 = document.getElementsByClassName("gameScene1")
+const $gameScene2 = document.getElementsByClassName("gameScene2")
+const $titleScene = document.getElementsByClassName("titleScene")
+const $gameOverScene = document.getElementsByClassName("gameOverScene")
+
+
+ $($gameScene1).show()   //HIDE ENTIRE DIV
+ $($gameScene2).hide() 
+ $($gameOverScene).hide()
+  
+ 
+ //event.currentTarget TARGET SPECIFIC ELEMENT!!!
+    // $( "p" ).click(function( event ) {
+    //   alert( event.currentTarget === this ); // true
+    // });
+
+
+$(".btn1").click(function btn1(){ //TITLE SCREEN
+    $(".titleScene").fadeIn(700).show()
+    $(".gameScene1").hide()
+    $(".gameScene2").hide()
+    $(".gameOverScene").hide()
+    console.log("btn1")
+       });
+$(".btn2").click(function btn2(){ //Game Scene 1
+    $(".titleScene").hide()
+    $(".gameScene1").fadeIn(400).show()
+    $(".gameScene2").hide()
+    $(".gameOverScene").hide()
+    console.log("btn2")
+    });
+$(".btn3").click(function btn3(){ //Game Scene 2
+    $(".titleScene").hide()
+    $(".gameScene1").hide()
+    $(".gameScene2").fadeIn(700).show()
+    $(".gameOverScene").hide()
+    console.log("btn3")
+    });
+$(".btn4").click(function btn4(){ //Game Over Scene
+    $(".titleScene").hide()
+    $(".gameScene1").hide()
+    $(".gameScene2").hide()
+    $(".gameOverScene").fadeIn(700).show()
+    console.log("btn4")
+    });  
+       
+
+
+
+});  
+
+
 
 // window.onscroll = function() {myFunction()};
 
@@ -12,45 +76,45 @@ console.log("app.js connected")
 //     navbar.classList.remove("sticky");
 //   }
 // }
-// $(function(){
-//    	//make connection
-// 	var socket = io.connect('http://localhost:3000')
+$(function(){
+    //make connection
+ var socket = io.connect('http://localhost:3001')
 
-// 	//buttons and inputs
-// 	var message = $("#message")
-// 	var username = $("#username")
-// 	var send_message = $("#send_message")
-// 	var send_username = $("#send_username")
-// 	var chatroom = $("#chatroom")
-// 	var feedback = $("#feedback")
+ //buttons and inputs
+ var message = $("#message")
+ var username = $("#username")
+ var send_message = $("#send_message")
+ var send_username = $("#send_username")
+ var chatroom = $("#chatroom")
+ var feedback = $("#feedback")
 
-// 	//Emit message
-// 	send_message.click(function(){
-// 		socket.emit('new_message', {message : message.val()})
-// 	})
+ //Emit message
+ send_message.click(function(){
+     socket.emit('new_message', {message : message.val()})
+ })
 
-// 	//Listen on new_message
-// 	socket.on("new_message", (data) => {
-// 		feedback.html('');
-// 		message.val('');
-// 		chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
-// 	})
+ //Listen on new_message
+ socket.on("new_message", (data) => {
+     feedback.html('');
+     message.val('');
+     chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
+ })
 
-// 	//Emit a username
-// 	send_username.click(function(){
-// 		socket.emit('change_username', {username : username.val()})
-// 	})
+ //Emit a username
+ send_username.click(function(){
+     socket.emit('change_username', {username : username.val()})
+ })
 
-// 	//Emit typing
-// 	message.bind("keypress", () => {
-// 		socket.emit('typing')
-// 	})
+ //Emit typing
+ message.bind("keypress", () => {
+     socket.emit('typing')
+ })
 
-// 	//Listen on typing
-// 	socket.on('typing', (data) => {
-// 		feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
-// 	})
-// });
+ //Listen on typing
+ socket.on('typing', (data) => {
+     feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
+ })
+});
 
 
 
@@ -62,13 +126,6 @@ console.log("app.js connected")
 // let titleQuery = 'fight club'
 // let queryURL = baseURL + apiKey + '&' + queryType
 
-           
-// $(".like button").on("click", function() {
-//   var $count = $(this).parent().find('.count');
-//   $count.html($count.html() * 1 + 1);
-//   if ($count > 5) {('.count').css("color","green") }
-  
-// }); 
 
 
 
@@ -93,27 +150,3 @@ console.log("app.js connected")
 
 
 
-
-// $(()=> {
-//   getMovie()
-
-//   $('form').on('submit', (event) => {
-//     event.preventDefault()
-//     console.log('clicky')
-//     titleQuery = $('input[type="text"]').val()
-//     getMovie()
-//   })
-
-//   console.log(queryURL)
-// })
-
-// $('.btn-counter').on('click', function(event, count) {
-//   event.preventDefault();
-  
-//   var $this = $(this),
-//       count = $this.attr('data-count'),
-//       active = $this.hasClass('active'),
-//       multiple = $this.hasClass('multiple-count');
-  
- 
-// });
