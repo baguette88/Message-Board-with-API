@@ -9,7 +9,7 @@ const userSchema = new Schema({
     name:  { type: String, required: true, unique: true }, //can say whether we want properties to be required or unique
     location: String,
     level: {type: Number, default: 1},
-    password: { type: String, required: true, unique: true }
+    password: { type: String, required: true, unique: true },
     // superUser: Boolean,
     // arrayExample: [ { roomNumber: Number, size: String, price: Number, booked: Boolean  } ],
     tags: [{type: String}]
