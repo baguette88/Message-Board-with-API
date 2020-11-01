@@ -6,13 +6,13 @@ const Schema = mongoose.Schema; // create a shorthand for the mongoose Schema co
 
 // Create a new Schema for User
 const userSchema = new Schema({
-    name:  { type: String, required: true, unique: true }, //can say whether we want properties to be required or unique
-    location: String,
+    username:  { type: String, required: true, unique: true }, 
+    // location: String,
     level: {type: Number, default: 1},
     password: { type: String, required: true, unique: true },
     // superUser: Boolean,
     // arrayExample: [ { roomNumber: Number, size: String, price: Number, booked: Boolean  } ],
-    tags: [{type: String}]
+    // tags: [{type: String}]
 }, {timestamps: true});
 
 const userSeed = mongoose.model('userSeed', userSchema)

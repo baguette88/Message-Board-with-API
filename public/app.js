@@ -2,13 +2,6 @@ console.log("app.js connected")
 $(document).ready(function(){
     let cl = (value) => console.log(value);
     cl("Jquery Active")
-    
-    // const $div = $('<div>')
-    // $($div).addClass('title')
-    // $('body').append($div)
-    // $($div).text("Div Example")
-   // $($div).style.color("blue")
-//JQUERY HERE
 
 const $tellplayer=  document.getElementById("tellPlayer")
 const $gameScene1 = document.getElementsByClassName("gameScene1")
@@ -16,20 +9,13 @@ const $gameScene2 = document.getElementsByClassName("gameScene2")
 const $titleScene = document.getElementsByClassName("titleScene")
 const $gameOverScene = document.getElementsByClassName("gameOverScene")
 
-
- $($gameScene1).show()   //HIDE ENTIRE DIV
+$($titleScene).show()
+ $($gameScene1).hide()   //HIDE ENTIRE DIV
  $($gameScene2).hide() 
  $($gameOverScene).hide()
-  
- 
- //event.currentTarget TARGET SPECIFIC ELEMENT!!!
-    // $( "p" ).click(function( event ) {
-    //   alert( event.currentTarget === this ); // true
-    // });
-
 
 $(".btn1").click(function btn1(){ //TITLE SCREEN
-    $(".titleScene").fadeIn(700).show()
+    $(".titleScene").fadeIn(700).show().css("color","green")
     $(".gameScene1").hide()
     $(".gameScene2").hide()
     $(".gameOverScene").hide()
@@ -45,7 +31,7 @@ $(".btn2").click(function btn2(){ //Game Scene 1
 $(".btn3").click(function btn3(){ //Game Scene 2
     $(".titleScene").hide()
     $(".gameScene1").hide()
-    $(".gameScene2").fadeIn(700).show()
+    $(".gameScene2").fadeIn(700).show().css("color","green")
     $(".gameOverScene").hide()
     console.log("btn3")
     });
@@ -53,29 +39,19 @@ $(".btn4").click(function btn4(){ //Game Over Scene
     $(".titleScene").hide()
     $(".gameScene1").hide()
     $(".gameScene2").hide()
-    $(".gameOverScene").fadeIn(700).show()
+    $(".gameOverScene").fadeIn(700).show().css("color","green")
     console.log("btn4")
     });  
-       
-
-
-
+$(".btn5").click(function btn5(){ //Game Over Scene
+     $(".titleScene").hide()
+     $(".gameScene1").show().css("color","green")
+    $(".gameScene2").hide()
+     $(".gameOverScene").hide()
+     console.log("btn5")
+        });  
 });  
 
 
-
-// window.onscroll = function() {myFunction()};
-
-// var navbar = document.getElementById("navbar");
-// var sticky = navbar.offsetBottom;
-
-// function myFunction() {
-//   if (window.pageYOffset >= sticky) {
-//     navbar.classList.add("sticky")
-//   } else {
-//     navbar.classList.remove("sticky");
-//   }
-// }
 $(function(){
     //make connection
  var socket = io.connect('http://localhost:3001')
@@ -113,6 +89,7 @@ $(function(){
 
  //Listen on typing
  socket.on('typing', (data) => {
+     "user is typing"
      feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
  })
 });

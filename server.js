@@ -186,7 +186,7 @@ app.use(express.static('public'))
 // })
 
 //Listen on port 3000
-server = app.listen(PORT2)
+server = app.listen(PORT)
 
 
 

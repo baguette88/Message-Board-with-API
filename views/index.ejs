@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>QuaranTeam</title>
 
     <link rel="stylesheet" href="/normalize.css">
     <link rel="stylesheet" href="/skeleton.css">
@@ -15,21 +15,70 @@
     crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-4ZPLezkTZTsojWFhpdFembdzFudphhoOzIunR1wH6g1WQDzCAiPvDyitaK67mp0+" crossorigin="anonymous"> -->
-     <!-- <script src="/app.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- <link href="lib/css/emoji.css" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   </head>
-br
 
      <div class="titleScene">
        
-    Login
     
+    <div class="container">
+      <!-- <form action="/action_page.php"> -->
+        <div class="row">
+          <h2 style="text-align:center">HELLO HUMAN</h2>
+     
+          <label id="lblGreetings"></label>
+
+          <script>
+              var myDate = new Date();
+              var hrs = myDate.getHours();
+          
+              var greet;
+          
+              if (hrs < 12)
+                  greet = 'Good Morning, QuaranTeam!';
+              else if (hrs >= 12 && hrs <= 17)
+                  greet = 'Good Afternoon, QuaranTeam!';
+              else if (hrs >= 17 && hrs <= 24)
+                  greet = 'Good Evening, QuaranTeam!';
+          
+              document.getElementById('lblGreetings').innerHTML =
+                  '<b>' + greet + '</b>';
+          
+          
+          
+          
+                  
+          </script> 
+    
+          <div class="col">
+          
+    <form action="">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password"  required>
+            <input type="submit" value="Login"><br>
+          <button class=".btn5">Hack Mainframe</button>
+        </form>
+          </div>
+    
+        </div>
+
+    </div>
+    
+    <div class="bottom-container">
+      <div class="row">
+        <div class="col">
+          <a href="#" style="color:blue" class="btn">Sign up</a>
+        </div>
+        <div class="col">
+          <a href="#" style="color:blue" class="btn">Forgot password?</a>
+        </div>
+      </div>
+    </div>
     </div>
    
    
@@ -38,14 +87,19 @@ br
      Open Scene
      Resources Page?
      Add CodeNoodle
+     <ul>
 
+      <li><a href= "https://noobcheck.netlify.app/" target="_blank" ><b>Trivia Game</b></a></li>
+      <li><a href= "https://codenoodle.netlify.app/" target="_blank" ><b>CodeNoodle</b></a></li>
+     
+    </ul> </nav>
 
 
      </div> 
   
 
 
-     <div class="gameScene1">
+  <div class="gameScene1">
   <br><br>
 
       
@@ -117,9 +171,8 @@ br
               <span class="highlighter">
                     <input type="submit" name="" value="Send"/></span>
            </form>
-          
-
    </div>
+
   </div>
     
        <div class="navbarTop">
@@ -130,26 +183,27 @@ br
         <button id="btn3" class="btn3">Chatroom</button>
         
         <button id="btn4" class="btn4">Resources</button>
-        Total Messages: <%= messageTotal %>   Total Likes: <%= likesTotal %>
 
-       </div>
+
+       </div><!-- END FEED/BULLETINS    -->
 
       
             
      <div class="gameScene2">
 
                 <section id="chatroom">
-            
+                
 
                  
                     <br>
-                    <section id="feedback"></section> 
+                    <section id="feedback" style="color:black"></section> 
                 </section>
                 <section>
                     <div id="change_username">
                   <input id="username" name="user" autocomplete="off" type="text" />
                   <button id="send_username" type="button">Change username</button>
                     </div>
+                  
                   </section>
               
                   
