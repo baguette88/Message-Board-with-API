@@ -26,67 +26,71 @@
      <div class="titleScene">
        
     
-    <div class="container">
+    <div class="container" style="height: 50%;">
       <!-- <form action="/action_page.php"> -->
         <div class="row">
-          <h2 style="text-align:center">HELLO HUMAN</h2>
+          <br>
+          <h2 style="text-align:center"> QuaranTeam </h2>
      
           <label id="lblGreetings"></label>
 
           <script>
-              var myDate = new Date();
-              var hrs = myDate.getHours();
+              let myDate = new Date();
+              let hrs = myDate.getHours();
           
-              var greet;
+              let greet;
           
               if (hrs < 12)
-                  greet = 'Good Morning, QuaranTeam!';
+                  greet = 'Good Morning, Jeffrey!';
               else if (hrs >= 12 && hrs <= 17)
-                  greet = 'Good Afternoon, QuaranTeam!';
+                  greet = 'Good Afternoon, Jeffrey!';
               else if (hrs >= 17 && hrs <= 24)
-                  greet = 'Good Evening, QuaranTeam!';
+                  greet = 'Good Evening, Jeffrey!';
           
               document.getElementById('lblGreetings').innerHTML =
                   '<b>' + greet + '</b>';
-          
-          
-          
-          
-                  
+                      
           </script> 
     
           <div class="col">
           
     <form action="">
-            <input type="text" name="username" placeholder="Username" required>
+            <input type="text" name="userName" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password"  required>
             <input type="submit" value="Login"><br>
-          <button class=".btn5">Hack Mainframe</button>
-        </form>
+             <!-- socket.on('change_username', (data) => {
+              socket.username = data.username  -->
+         
+         </form>
+
+           
+    <div class="bottom-container">
+      <div class="row">
+        <div class="col">
+          <a href="/messages/login" style="color:blue" class="btn">Sign up</a>
+        </div>
+        <div class="col">
+          <a href="/messages/login" style="color:blue" class="btn">Forgot password?</a>
+        </div>
+      </div>
+    </div>
+        <!-- <button class=".btn5">Hack Mainframe</button> -->
           </div>
     
         </div>
 
     </div>
-    
-    <div class="bottom-container">
-      <div class="row">
-        <div class="col">
-          <a href="#" style="color:blue" class="btn">Sign up</a>
-        </div>
-        <div class="col">
-          <a href="#" style="color:blue" class="btn">Forgot password?</a>
-        </div>
-      </div>
-    </div>
+ 
     </div>
    
    
      <div class="gameOverScene">
-
+<br>
+<br>
      Open Scene
      Resources Page?
      Add CodeNoodle
+     Add Contact Me section
      <ul>
 
       <li><a href= "https://noobcheck.netlify.app/" target="_blank" ><b>Trivia Game</b></a></li>

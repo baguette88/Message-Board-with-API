@@ -13,34 +13,28 @@ const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 
 // middleware to help with the form submission
-// app.use(express.urlencoded({extended:false}))
-// app.use(methodOverride('_method'))
-
-
 // app.use(express.urlencoded({extended: false})); //  recognize the incoming object as strings or arrays.
 
 app.use(express.json());  // allows us to recognize the incoming request as a JSON object. 
 app.use(express.urlencoded({extended: false})); //  recognize the incoming object as strings or arrays.
-app.use(express.static(__dirname + '/public'));  // ???
-app.use(methodOverride('_method'))
+app.use(express.static(__dirname + '/public'));  // Access public directory
+app.use(methodOverride('_method'))  //allow editing
 
-//Port
-//___________________
+//Port_
 // Allow use of Heroku's port or your own local port, depending on the environment
 const PORT = process.env.PORT || 3000;
 const PORT2 = process.env.PORT || 3001;
 
-//___________________
+//_
 //Database
-//___________________
-// How to connect to the database either via heroku or locally
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ 'messages';
 
 // Connect to Mongo
 mongoose.connect(MONGODB_URI,  { useNewUrlParser: true,  useUnifiedTopology: true});
+// mongoose.connect('mongodb://localhost:27017/messageCRUD', { useNewUrlParser: true, useUnifiedTopology: true } );
+//replaced with direct MONGODB connect
 
 const db = mongoose.connection
-////////
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
 db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
@@ -49,12 +43,11 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 // open the connection to mongo
 db.on('open' , ()=>{});
 ////////
-////////
+
 
 
 
 // mongoose connection logic
-// mongoose.connect('mongodb://localhost:27017/messageCRUD', { useNewUrlParser: true, useUnifiedTopology: true } );
 mongoose.connection.once('open', ()=> {
     console.log('connected to mongo');
 });
@@ -72,6 +65,11 @@ app.get('/messages', (req, res)=>{
       allMessages: allMessages
       })
   })
+//   $("html, body").animate({ 
+//     scrollBottom: $( 
+//       'html, body').get(0).scrollHeight 
+// }, 2000); 
+  
 })
 
 app.get('/', (req, res)=>{   //INITIAL LOGIN
@@ -101,14 +99,16 @@ app.get('/messages/new', (req, res) => {
 //CREATE//
 ///post///
 app.post('/messages/', (req, res)=>{    //Post is an express method to POST
-  if(req.body.userType === 'on'){ //if checked, req.body.readyToEat is set to 'on'
-    req.body.userType = true;
-  } else { //if not checked, req.body.readyToEat is undefined
-    req.body.userType = false;
-  }
+  // if(req.body.userType === 'on'){ //if checked, req.body.readyToEat is set to 'on'
+  //   req.body.userType = true;
+  // } else { //if not checked, req.body.readyToEat is undefined
+  //   req.body.userType = false;
+  // }
   Message.create(req.body, (error, createdMessage)=>{
-    res.redirect('/messages');
+    $('html, body').scrollTop($(document).height());
+    // res.redirect('/messages');
   })
+  $('html, body').scrollTop($(document).height());
 })
 
 /////////////
@@ -186,7 +186,7 @@ app.use(express.static('public'))
 // })
 
 //Listen on port 3000
-server = app.listen(PORT)
+server = app.listen(PORT2) // PORT THROWING ERROR, USING PORT 2 UNTIL FIX IS FOUND
 
 
 
@@ -199,7 +199,7 @@ io.on('connection', (socket) => {
 	console.log('New user connected')
 
 	//default username
-	socket.username = "Anonymous"
+	socket.username = userName || 'Stranger'
 
     //listen on change_username
     socket.on('change_username', (data) => {

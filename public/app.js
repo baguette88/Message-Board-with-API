@@ -3,16 +3,62 @@ $(document).ready(function(){
     let cl = (value) => console.log(value);
     cl("Jquery Active")
 
+     let userName = ''
+    let defaultName = userName || 'Stranger'
 const $tellplayer=  document.getElementById("tellPlayer")
 const $gameScene1 = document.getElementsByClassName("gameScene1")
 const $gameScene2 = document.getElementsByClassName("gameScene2")
 const $titleScene = document.getElementsByClassName("titleScene")
 const $gameOverScene = document.getElementsByClassName("gameOverScene")
 
+function showTitleScene() {
 $($titleScene).show()
  $($gameScene1).hide()   //HIDE ENTIRE DIV
  $($gameScene2).hide() 
  $($gameOverScene).hide()
+}
+
+function showFeed() {
+    $(".titleScene").hide()
+    $(".gameScene1").fadeIn(400).show()
+    $(".gameScene2").hide()
+    $(".gameOverScene").hide()
+    console.log("btn2")
+    // $(".navbar").animate({ scrollBottom: $(document).height() }, -1000);
+    // // NEED AUTOSCROLL TO BOTTOM OF MESSAGES
+    //   });
+}
+
+let loggedIn = 0
+
+function checkLogin () {
+    console.log("checking credentials")
+    if (loggedIn = 1) {
+        showFeed()
+        console.log("user is logged in")
+    } else {
+        showTitleScene()
+        ("user needs to log in")
+    }
+
+}
+
+checkLogin()
+
+// showTitleScene()
+
+function createUser() {
+    console.log("user created")
+}
+
+
+
+function LogIn() {
+    console.log("logged in")
+}
+
+
+
 
 $(".btn1").click(function btn1(){ //TITLE SCREEN
     $(".titleScene").fadeIn(700).show().css("color","green")
@@ -21,12 +67,17 @@ $(".btn1").click(function btn1(){ //TITLE SCREEN
     $(".gameOverScene").hide()
     console.log("btn1")
        });
+       
 $(".btn2").click(function btn2(){ //Game Scene 1
     $(".titleScene").hide()
     $(".gameScene1").fadeIn(400).show()
     $(".gameScene2").hide()
     $(".gameOverScene").hide()
     console.log("btn2")
+    $(".navbar").animate({ scrollBottom: $(document).height() }, -1000);
+    // NEED AUTOSCROLL TO BOTTOM OF MESSAGES
+      });
+    
     });
 $(".btn3").click(function btn3(){ //Game Scene 2
     $(".titleScene").hide()
@@ -34,6 +85,7 @@ $(".btn3").click(function btn3(){ //Game Scene 2
     $(".gameScene2").fadeIn(700).show().css("color","green")
     $(".gameOverScene").hide()
     console.log("btn3")
+   
     });
 $(".btn4").click(function btn4(){ //Game Over Scene
     $(".titleScene").hide()
@@ -49,7 +101,7 @@ $(".btn5").click(function btn5(){ //Game Over Scene
      $(".gameOverScene").hide()
      console.log("btn5")
         });  
-});  
+  
 
 
 $(function(){
@@ -57,13 +109,13 @@ $(function(){
  var socket = io.connect('http://localhost:3001')
 
  //buttons and input
- var message = $("#message")
- var username = $("#username")
- var send_message = $("#send_message")
- var send_username = $("#send_username")
- var chatroom = $("#chatroom")
- var feedback = $("#feedback")
- var ulz = $('.ulz')
+ let message = $("#message")
+ let username = $("#username")
+ let send_message = $("#send_message")
+ let send_username = $("#send_username")
+ let chatroom = $("#chatroom")
+ let feedback = $("#feedback")
+ let ulz = $('.ulz')
 
  //Emit message
  send_message.click(function(){
@@ -74,7 +126,7 @@ $(function(){
  socket.on("new_message", (data) => {
      feedback.html('');
      message.val('');
-     chatroom.append("<li class='message'>" + data.username + ": " + data.message + "</li>")
+     chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
  })
 
  //Emit a username
