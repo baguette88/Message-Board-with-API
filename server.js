@@ -59,6 +59,13 @@ const Message = require('./models/messages.js')
 ///////////
 // INDEX //
 ///////////
+app.get('/messages/login', (req, res)=>{
+  
+    res.render('login.ejs', {
+     
+      })
+  })
+
 app.get('/messages', (req, res)=>{
   Message.find({}, (error, allMessages)=>{
     res.render('index.ejs', {
@@ -74,17 +81,15 @@ app.get('/messages', (req, res)=>{
 
 app.get('/', (req, res)=>{   //INITIAL LOGIN
  
-    res.redirect('/messages')
+    res.redirect('/messages/login')
 
 })
 
 
 app.get('/messages/boards', (req, res)=>{
-  Message.find({}, (error, allMessages)=>{
-    res.render('/messages/boards', {
-      allMessages: allMessages
-      })
-  })
+ 
+    res.render('boards.ejs');
+  
 })
 
 ///////
@@ -121,6 +126,15 @@ app.post('/messages/', (req, res)=>{    //Post is an express method to POST
         { message: foundMessage, //pass in found message 
       })
   })
+})
+
+
+
+app.get('/messages/login', (req, res)=>{
+  Message.findById(req.params.id, (err, foundMessage)=>{ //find the Message
+      res.render('login.ejs');
+  
+})
 })
 
 ///////////
@@ -199,7 +213,7 @@ io.on('connection', (socket) => {
 	console.log('New user connected')
 
 	//default username
-	socket.username = userName || 'Stranger'
+	socket.username =  'Stranger'
 
     //listen on change_username
     socket.on('change_username', (data) => {
