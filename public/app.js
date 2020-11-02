@@ -29,11 +29,10 @@ function showFeed() {
     //   });
 }
 
-let loggedIn = 0
-
+let loggedIn = 1
 function checkLogin () {
     console.log("checking credentials")
-    if (loggedIn = 1) {
+    if (loggedIn == 1) {
         showFeed()
         console.log("user is logged in")
     } else {
@@ -67,14 +66,14 @@ $(".btn1").click(function btn1(){ //TITLE SCREEN
     $(".gameOverScene").hide()
     console.log("btn1")
        });
-       
+
 $(".btn2").click(function btn2(){ //Game Scene 1
     $(".titleScene").hide()
     $(".gameScene1").fadeIn(400).show()
     $(".gameScene2").hide()
     $(".gameOverScene").hide()
     console.log("btn2")
-    $(".navbar").animate({ scrollBottom: $(document).height() }, -1000);
+    tobottom()
     // NEED AUTOSCROLL TO BOTTOM OF MESSAGES
       });
     
@@ -102,11 +101,12 @@ $(".btn5").click(function btn5(){ //Game Over Scene
      console.log("btn5")
         });  
   
-
+function tobottom(){
+	$('html, body').animate({scrollTop:$(document).height()}, 'slow');
 
 $(function(){
     //make connection
- var socket = io.connect('http://localhost:3001')
+ let socket = io.connect('http://localhost:3001')
 
  //buttons and input
  let message = $("#message")
@@ -147,36 +147,33 @@ $(function(){
 });
 
 
+}
 
-
-// const baseURL = `http://www.omdbapi.com/?`
-// const apiKey = `apikey=53aa2cd6` //backticks
-// // ff05b1a8 MINE
-// const queryType = `t=`
-// let titleQuery = 'fight club'
-// let queryURL = baseURL + apiKey + '&' + queryType
-
-
-
-
-// const getMovie = () => {
-//   $.ajax({
-//     url: queryURL + titleQuery
-//   }).then((movieData) => {
-//     console.log(movieData)
-//     $('.container').html(`
-//       <h2> ${movieData.Title} </h2>
-//       <h3> ${movieData.Year} </h3>
-//       <h4> ${movieData.Rated} <h4>
-//       <h5> ${movieData.Genre} <h5>
-//       <p>  ${movieData.Plot} </p>
-//       `)
-//       const $img = $('<img>').attr('src', movieData.Poster).attr('alt', movieData.Title)
-//       $('.container').append($img)
-//   }, (error) => {
-//     console.error(error)
-//   })
-// }
+const baseURL = `http://www.omdbapi.com/?`
+const apiKey = `apikey=53aa2cd6` //backticks
+// ff05b1a8 MINE
+const queryType = `t=`
+let titleQuery = 'fight club'
+let queryURL = baseURL + apiKey + '&' + queryType
 
 
 
+
+const getMovie = () => {
+  $.ajax({
+    url: queryURL + titleQuery
+  }).then((movieData) => {
+    console.log(movieData)
+    $('.container').html(`
+      <h2> ${movieData.Title} </h2>
+      <h3> ${movieData.Year} </h3>
+      <h4> ${movieData.Rated} <h4>
+      <h5> ${movieData.Genre} <h5>
+      <p>  ${movieData.Plot} </p>
+      `)
+      const $img = $('<img>').attr('src', movieData.Poster).attr('alt', movieData.Title)
+      $('.container').append($img)
+  }, (error) => {
+    console.error(error)
+  })
+}

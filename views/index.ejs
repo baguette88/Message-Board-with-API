@@ -106,9 +106,7 @@
   <div class="gameScene1">
   <br><br>
   <button onclick="tobottom()">scroll to bottom</button>
-<script> function tobottom(){
-	$('html,body').animate({ scrollTop: ($('html').height())-($(window).height())}, 3000, 'easeInOutQuad')											 
-} </script>
+
       
         <ul>
                  <%  let messageTotal = 0 %>
@@ -116,7 +114,8 @@
 
                  <% for(let i = 0; i < allMessages.length; i++) { %>
 
-                  
+                  <!-- SET CONDITIONAL FOR BOARD TAG   -->
+
     <li>   <!-- LI PRINTED EACH LOOP    -->
                     <%  messageTotal = messageTotal + 1 %>
                  <%    if (i%2) {  %>
@@ -125,9 +124,7 @@
                          <div class="container">
                   <%   }  %>
         
-
-           
-
+<!-- LINK TO USER? CURRENTLY JUST ALTERNATING    -->
                 <%    if (i%2) {  %>
                     <img src="icon2.png" style="float:left" alt="i%2 =true">
                  <%    } else { %>
@@ -170,11 +167,12 @@
 
      
 
-
+<!-- NEW MESSAGE    -->
 <div class="navbar">
           <form action="/messages" method="POST" >
               User: <input type="text" name="user" /><br/>
               Message: <input type="text" name="message" maxlength="250" />
+              
               <span class="highlighter">
                     <input type="submit" name="" value="Send"/></span>
            </form>
@@ -190,7 +188,7 @@
         <button id="btn3" class="btn3">Chatroom</button>
         
         <button id="btn4" class="btn4">Resources</button>
-
+         <button> <a href="/messages/boards">Boards</a> <br> </button>
 
        </div><!-- END FEED/BULLETINS    -->
 

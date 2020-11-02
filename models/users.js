@@ -6,7 +6,7 @@ const Schema = mongoose.Schema; // create a shorthand for the mongoose Schema co
 
 // Create a new Schema for User
 const userSchema = new Schema({
-    username:  { type: String, required: true, unique: true }, 
+    userName:  { type: String, required: true, unique: true }, 
     // location: String,
     level: {type: Number, default: 1},
     password: { type: String, required: true, unique: true },

@@ -72,10 +72,7 @@ app.get('/messages', (req, res)=>{
       allMessages: allMessages
       })
   })
-//   $("html, body").animate({ 
-//     scrollBottom: $( 
-//       'html, body').get(0).scrollHeight 
-// }, 2000); 
+
   
 })
 
@@ -104,17 +101,14 @@ app.get('/messages/new', (req, res) => {
 //CREATE//
 ///post///
 app.post('/messages/', (req, res)=>{    //Post is an express method to POST
-  // if(req.body.userType === 'on'){ //if checked, req.body.readyToEat is set to 'on'
-  //   req.body.userType = true;
-  // } else { //if not checked, req.body.readyToEat is undefined
-  //   req.body.userType = false;
-  // }
+
   Message.create(req.body, (error, createdMessage)=>{
-    $('html, body').scrollTop($(document).height());
-    // res.redirect('/messages');
+    console.log("message created")
+    res.redirect('/messages')
   })
-  $('html, body').scrollTop($(document).height());
 })
+  
+
 
 /////////////
 /// edit ////
@@ -130,22 +124,22 @@ app.post('/messages/', (req, res)=>{    //Post is an express method to POST
 
 
 
-app.get('/messages/login', (req, res)=>{
-  Message.findById(req.params.id, (err, foundMessage)=>{ //find the Message
-      res.render('login.ejs');
+// app.get('/messages/login', (req, res)=>{
+//   Message.findById(req.params.id, (err, foundMessage)=>{ //find the Message
+//       res.render('login.ejs');
   
-})
-})
+// })
+// })
 
 ///////////
 // update//
 ///////////
 app.put('/messages/:id', (req, res)=>{
-  if(req.body.readyToEat === 'on'){
-      req.body.readyToEat = true;
-  } else {
-      req.body.readyToEat = false;
-  }
+  // if(req.body.readyToEat === 'on'){
+  //     req.body.readyToEat = true;
+  // } else {
+  //     req.body.readyToEat = false;
+  // }
   Message.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedModel)=> {
     res.redirect('/messages');
   })

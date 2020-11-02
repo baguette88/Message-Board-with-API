@@ -6,6 +6,7 @@ const messageSchema = new mongoose.Schema({
   likes:  { type: Number, default: 0 },
   //  level:  { type: Number, default: 1 },
   // superUser: Boolean,
+    board: {type: String, default: 'public'}
 }, {timestamps: true});
 
 const Message = mongoose.model('Message', messageSchema)
