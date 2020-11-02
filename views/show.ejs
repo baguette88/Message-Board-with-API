@@ -9,25 +9,20 @@
     </head>
     <body>
         <div class="container">
-          <%= let message.user = message.user || 'stranger' %> 
+     
         
         Message Overview <br>
-          <%=message.user; %> 
-          : <%=message.message; %> <br>
+          <%=message.user; %>  :  <%=message.message; %> <br>
         <%=message.createdAt; %> <br>
         Likes: <%=message.likes; %> <br>
         <i class="fas fa-thumbs-up"></i>
       
-
-
-        Image: (coming soon) <br>
-        <button> <a href="/">Back to Index FIX LINK</a> <br></button>
+       <br>
+         <a href="/">Back to Login</a> <br>
           
           <a href="/messages">Back to Message Board</a> <br>
-         
-       
           <a href="/messages/boards">Boards</a> <br>
-          <a href="/messages/login">Dev Login</a> <br>
+    
           
         </div>
     </body>

@@ -83,14 +83,12 @@ app.get('/', (req, res)=>{   //INITIAL LOGIN
 
 })
 
-
 app.get('/messages/boards', (req, res)=>{
  
     res.render('boards.ejs');
   
 })
 
-///////
 //NEW//
 ///////
 app.get('/messages/new', (req, res) => {
@@ -98,7 +96,7 @@ app.get('/messages/new', (req, res) => {
   //res.send('new') send string of new to test
 })
 
-//////////
+
 //CREATE//
 ///post///
 app.post('/messages/', (req, res)=>{    //Post is an express method to POST
@@ -111,8 +109,6 @@ app.post('/messages/', (req, res)=>{    //Post is an express method to POST
 })
   
 
-
-/////////////
 /// edit ////
 /////////////
 // app.get('/messages/:id/edit', (req, res)=>{
@@ -124,8 +120,6 @@ app.post('/messages/', (req, res)=>{    //Post is an express method to POST
   })
 })
 
-
-
 // app.get('/messages/login', (req, res)=>{
 //   Message.findById(req.params.id, (err, foundMessage)=>{ //find the Message
 //       res.render('login.ejs');
@@ -133,7 +127,6 @@ app.post('/messages/', (req, res)=>{    //Post is an express method to POST
 // })
 // })
 
-///////////
 // update//
 ///////////
 app.put('/messages/:id', (req, res)=>{
@@ -147,7 +140,6 @@ app.put('/messages/:id', (req, res)=>{
   })
 })
 
-//////////
 // show///
 //////////
 app.get('/messages/:id', (req, res) =>{
@@ -166,8 +158,7 @@ app.delete('/messages/:id', (req, res) => {
   })
 })
 
-////CHANGE LIKES
-app.patch('/messages/:id', (req,res) => {
+app.patch('/messages/:id', (req,res) => {  ////LIKE BUTTON INCREMENT
   console.log(req.body)
   Message.findByIdAndUpdate(req.params.id, {$inc: {'likes': +1}}, (err) => {
     if (err) {
@@ -178,17 +169,14 @@ app.patch('/messages/:id', (req,res) => {
   })
 })
 
-
-// const express = require('express')
-// const app = express()
-
+// const express = require('express')  //REDUNDANT
+// const app = express()                 // REDUNDANT
 
 //set the template engine ejs
 app.set('view engine', 'ejs')
 
 //middlewares
 app.use(express.static('public'))
-
 
 //routes
 // app.get('/', (req, res) => {
@@ -197,8 +185,6 @@ app.use(express.static('public'))
 
 //Listen on port 3000
 server = app.listen(PORT2) // PORT THROWING ERROR, USING PORT 2 UNTIL FIX IS FOUND
-
-
 
 //socket.io instantiation
 const io = require("socket.io")(server)
@@ -227,10 +213,6 @@ io.on('connection', (socket) => {
     	socket.broadcast.emit('typing', {username : socket.username})
     })
 })
-
-
-
-
 
 // the app running the server    PORT SHOULD BE ON?!
 app.listen(PORT, () => {
