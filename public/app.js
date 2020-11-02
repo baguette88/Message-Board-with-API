@@ -41,11 +41,12 @@ function checkLogin () {
     }
 
 }
-
 checkLogin()
 
 // showTitleScene()
 
+
+/////LOGIN
 function createUser() {
     console.log("user created")
 }
@@ -64,6 +65,7 @@ $(".btn1").click(function btn1(){ //TITLE SCREEN
     $(".gameScene1").hide()
     $(".gameScene2").hide()
     $(".gameOverScene").hide()
+    $(".titleScene").css("background-image",url("public/back.jpg"))
     console.log("btn1")
        });
 
@@ -81,7 +83,7 @@ $(".btn2").click(function btn2(){ //Game Scene 1
 $(".btn3").click(function btn3(){ //Game Scene 2
     $(".titleScene").hide()
     $(".gameScene1").hide()
-    $(".gameScene2").fadeIn(700).show().css("color","green")
+    $(".gameScene2").show().css("color","black")
     $(".gameOverScene").hide()
     console.log("btn3")
    
@@ -109,13 +111,13 @@ $(function(){
  let socket = io.connect('http://localhost:3001')
 
  //buttons and input
- let message = $("#message")
- let username = $("#username")
- let send_message = $("#send_message")
- let send_username = $("#send_username")
- let chatroom = $("#chatroom")
- let feedback = $("#feedback")
- let ulz = $('.ulz')
+ const message = $("#message")
+ const username = $("#username")
+ const send_message = $("#send_message")
+ const send_username = $("#send_username")
+ const chatroom = $("#chatroom")
+ const feedback = $("#feedback")
+ const ulz = $('.ulz')
 
  //Emit message
  send_message.click(function(){
@@ -149,31 +151,43 @@ $(function(){
 
 }
 
-const baseURL = `http://www.omdbapi.com/?`
-const apiKey = `apikey=53aa2cd6` //backticks
-// ff05b1a8 MINE
-const queryType = `t=`
-let titleQuery = 'fight club'
-let queryURL = baseURL + apiKey + '&' + queryType
+// const baseURL = `http://www.omdbapi.com/?`
+// const apiKey = `apikey=53aa2cd6` //backticks
+// // ff05b1a8 MINE
+// const queryType = `t=`
+// let titleQuery = 'fight club'
+// let queryURL = baseURL + apiKey + '&' + queryType
 
 
 
 
-const getMovie = () => {
-  $.ajax({
-    url: queryURL + titleQuery
-  }).then((movieData) => {
-    console.log(movieData)
-    $('.container').html(`
-      <h2> ${movieData.Title} </h2>
-      <h3> ${movieData.Year} </h3>
-      <h4> ${movieData.Rated} <h4>
-      <h5> ${movieData.Genre} <h5>
-      <p>  ${movieData.Plot} </p>
-      `)
-      const $img = $('<img>').attr('src', movieData.Poster).attr('alt', movieData.Title)
-      $('.container').append($img)
-  }, (error) => {
-    console.error(error)
-  })
-}
+// const getMovie = () => {
+//   $.ajax({
+//     url: queryURL + titleQuery
+//   }).then((movieData) => {
+//     console.log(movieData)
+//     $('.container').html(`
+//       <h2> ${movieData.Title} </h2>
+//       <h3> ${movieData.Year} </h3>
+//       <h4> ${movieData.Rated} <h4>
+//       <h5> ${movieData.Genre} <h5>
+//       <p>  ${movieData.Plot} </p>
+//       `)
+//       const $img = $('<img>').attr('src', movieData.Poster).attr('alt', movieData.Title)
+//       $('.container').append($img)
+//   }, (error) => {
+//     console.error(error)
+//   })
+// }
+
+//sidebar functions
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+  
+  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }

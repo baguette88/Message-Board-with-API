@@ -9,14 +9,14 @@
     </head>
     <body>
        <div class="container">
-        <div class="banner">     <h1>Edit Log</h1></div>
+         <h1>Edit Log</h1>
         <form action="/messages/<%=message._id%>?_method=PUT" method="POST">
             Name: <input type="text" name="user" /><br/>
             Message: <input type="text" name="message" /><br/>
             <!-- SuperUser: <input type="checkbox" name="superUser" /><br/> -->
          
-                <label for="name">Name</label>
-              original value="<%= message.name %>"/>
+                <label for="name">Original Message:
+            "<%= message.message %>" </label>
              
                 <input type="submit" name="" value="Submit Changes"/>
             </form>

@@ -70,6 +70,7 @@ app.get('/messages', (req, res)=>{
   Message.find({}, (error, allMessages)=>{
     res.render('index.ejs', {
       allMessages: allMessages
+      // tobottom()
       })
   })
 
@@ -105,6 +106,7 @@ app.post('/messages/', (req, res)=>{    //Post is an express method to POST
   Message.create(req.body, (error, createdMessage)=>{
     console.log("message created")
     res.redirect('/messages')
+   
   })
 })
   
