@@ -7,6 +7,12 @@
 //npm install express-session
 //npm install dotenv
 
+//nmp i bcrypt (authentication encrytion via hash)
+const messagesController = require('./controllers/messages.js');
+const usersController = require('./controllers/users.js');
+app.use('/messages', messagesController)
+app.use('/users', usersController)
+
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
@@ -52,167 +58,66 @@ mongoose.connection.once('open', ()=> {
     console.log('connected to mongo');
 });
 
-// importing the message model
+// importing the message and user models
 const Message = require('./models/messages.js')
+const User = require('./models/messages.js')
 
-// ROUTES //
-///////////
-// INDEX //
-///////////
-app.get('/messages/login', (req, res)=>{
-  
-    res.render('login.ejs', {
-     
-      })
-  })
+////////////////////////
+//USER AUTHENTICATION///
+////////////////////////
 
-app.get('/messages', (req, res)=>{
-  Message.find({}, (error, allMessages)=>{
-    res.render('index.ejs', {
-      allMessages: allMessages
-      // tobottom()
-      })
-  })
+checkLogin()
 
-  
-})
-
-app.get('/', (req, res)=>{   //INITIAL LOGIN
- 
-    res.redirect('/messages/login')
-
-})
-
-app.get('/messages/boards', (req, res)=>{
- 
-    res.render('boards.ejs');
-  
-})
-
-//NEW//
-///////
-app.get('/messages/new', (req, res) => {
-  res.render('new.ejs');
-  //res.send('new') send string of new to test
-})
+// showTitleScene()
 
 
-//CREATE//
-///post///
-app.post('/messages/', (req, res)=>{    //Post is an express method to POST
+/////LOGIN
+function createUser() {
+    console.log("user created")
+}
 
-  Message.create(req.body, (error, createdMessage)=>{
-    console.log("message created")
-    res.redirect('/messages')
-   
-  })
-})
-  
 
-/// edit ////
-/////////////
-// app.get('/messages/:id/edit', (req, res)=>{
-  app.get('/messages/:id/edit', (req, res)=>{
-  Message.findById(req.params.id, (err, foundMessage)=>{ //find the Message
-      res.render('edit.ejs', 
-        { message: foundMessage, //pass in found message 
-      })
-  })
-})
 
-// app.get('/messages/login', (req, res)=>{
-//   Message.findById(req.params.id, (err, foundMessage)=>{ //find the Message
-//       res.render('login.ejs');
-  
-// })
-// })
+function LogIn() {
+    console.log("logged in")
+}
 
-// update//
-///////////
-app.put('/messages/:id', (req, res)=>{
-  // if(req.body.readyToEat === 'on'){
-  //     req.body.readyToEat = true;
-  // } else {
-  //     req.body.readyToEat = false;
-  // }
-  Message.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedModel)=> {
-    res.redirect('/messages');
-  })
-})
+let loggedIn = 1 // INITIALLY LOGGED OUT
 
-// show///
-//////////
-app.get('/messages/:id', (req, res) =>{
-  Message.findById(req.params.id, (err, foundMessage)=>{
-    res.render('show.ejs', {
-      message: foundMessage,
-    })
-  })
-})
-
-////////////
-// delete //
-app.delete('/messages/:id', (req, res) => {
-  Message.findByIdAndRemove(req.params.id, { useFindAndModify: false }, (err, data)=>{
-    res.redirect('/messages') //redirect back to Message index
-  })
-})
-
-app.patch('/messages/:id', (req,res) => {  ////LIKE BUTTON INCREMENT
-  console.log(req.body)
-  Message.findByIdAndUpdate(req.params.id, {$inc: {'likes': +1}}, (err) => {
-    if (err) {
-      console.log(err)
+function checkLogin () {
+    console.log("checking credentials")
+    if (loggedIn == 1) {
+        showFeed()
+        console.log("user is logged in")
     } else {
-      res.redirect(`/messages`)
+        showTitleScene()
+        ("user needs to log in")
     }
-  })
-})
 
-// const express = require('express')  //REDUNDANT
-// const app = express()                 // REDUNDANT
+}
 
-//set the template engine ejs
-app.set('view engine', 'ejs')
 
-//middlewares
-app.use(express.static('public'))
+//localhost:3000/retreive-session
+//initial state
+///////////////////////
+//  const bcrypt = require('bcrypt')
 
-//routes
-// app.get('/', (req, res) => {
-// 	res.render('index')
+// app.get('/create-session,' (req, res) => {
+//   const hashedString = bcrypt.hashSync('your string here';
+//    bcrypt.genSaltSync(10))
 // })
 
-//Listen on port 3000
-server = app.listen(PORT2) // PORT THROWING ERROR, USING PORT 2 UNTIL FIX IS FOUND
+// app.get('/retreive-session'), (req,res) =>
+// if (bcrypt.compareSync('you guess here', req.session.password)){
+//   console.log("pass matches")  
+// } else {
+//   console.log("not a match")
+// }
+// res.redirect ('/')
+// })
 
-//socket.io instantiation
-const io = require("socket.io")(server)
 
-
-//listen on every connection
-io.on('connection', (socket) => {
-	console.log('New user connected')
-
-	//default username
-	socket.username =  'Stranger'
-
-    //listen on change_username
-    socket.on('change_username', (data) => {
-        socket.username = data.username
-    })
-
-    //listen on new_message
-    socket.on('new_message', (data) => {
-        //broadcast the new message
-        io.sockets.emit('new_message', {message : data.message, username : socket.username});
-    })
-
-    //listen on typing
-    socket.on('typing', (data) => {
-    	socket.broadcast.emit('typing', {username : socket.username})
-    })
-})
+ // PORT THROWING ERROR, USING PORT 2 UNTIL FIX IS FOUND
 
 // the app running the server    PORT SHOULD BE ON?!
 app.listen(PORT, () => {

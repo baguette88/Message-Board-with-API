@@ -1,5 +1,11 @@
 console.log("app.js connected")
 $(document).ready(function(){
+
+ 
+
+
+
+
     let cl = (value) => console.log(value);
     cl("Jquery Active")
 
@@ -28,37 +34,6 @@ function showFeed() {
     // // NEED AUTOSCROLL TO BOTTOM OF MESSAGES
     //   });
 }
-
-let loggedIn = 1
-function checkLogin () {
-    console.log("checking credentials")
-    if (loggedIn == 1) {
-        showFeed()
-        console.log("user is logged in")
-    } else {
-        showTitleScene()
-        ("user needs to log in")
-    }
-
-}
-checkLogin()
-
-// showTitleScene()
-
-
-/////LOGIN
-function createUser() {
-    console.log("user created")
-}
-
-
-
-function LogIn() {
-    console.log("logged in")
-}
-
-
-
 
 $(".btn1").click(function btn1(){ //TITLE SCREEN
     $(".titleScene").fadeIn(700).show().css("color","green")
@@ -106,79 +81,35 @@ $(".btn5").click(function btn5(){ //Game Over Scene
 function tobottom(){
 	$('html, body').animate({scrollTop:$(document).height()}, 'slow');
 
-$(function(){
-    //make connection
- let socket = io.connect('http://localhost:3001')
-
- //buttons and input
- const message = $("#message")
- const username = $("#username")
- const send_message = $("#send_message")
- const send_username = $("#send_username")
- const chatroom = $("#chatroom")
- const feedback = $("#feedback")
- const ulz = $('.ulz')
-
- //Emit message
- send_message.click(function(){
-     socket.emit('new_message', {message : message.val()})
- })
-
- //Listen on new_message
- socket.on("new_message", (data) => {
-     feedback.html('');
-     message.val('');
-     chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
- })
-
- //Emit a username
- send_username.click(function(){
-     socket.emit('change_username', {username : username.val()})
- })
-
- //Emit typing
- message.bind("keypress", () => {
-     socket.emit('typing')
- })
-
- //Listen on typing
- socket.on('typing', (data) => {
-     "user is typing"
-     feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
- })
-});
+const baseURL = `http://www.omdbapi.com/?`
+const apiKey = `apikey=53aa2cd6` //backticks
+// ff05b1a8 MINE
+const queryType = `t=`
+let titleQuery = 'fight club'
+let queryURL = baseURL + apiKey + '&' + queryType
 
 
+
+
+const getMovie = () => {
+  $.ajax({
+    url: queryURL + titleQuery
+  }).then((movieData) => {
+    console.log(movieData)
+    $('.container').html(`
+      <h2> ${movieData.Title} </h2>
+      <h3> ${movieData.Year} </h3>
+      <h4> ${movieData.Rated} <h4>
+      <h5> ${movieData.Genre} <h5>
+      <p>  ${movieData.Plot} </p>
+      `)
+      console.log(movieData.Title)
+      const $img = $('<img>').attr('src', movieData.Poster).attr('alt', movieData.Title)
+      $('.container').append($img)
+  }, (error) => {
+    console.error(error)
+  })
 }
-
-// const baseURL = `http://www.omdbapi.com/?`
-// const apiKey = `apikey=53aa2cd6` //backticks
-// // ff05b1a8 MINE
-// const queryType = `t=`
-// let titleQuery = 'fight club'
-// let queryURL = baseURL + apiKey + '&' + queryType
-
-
-
-
-// const getMovie = () => {
-//   $.ajax({
-//     url: queryURL + titleQuery
-//   }).then((movieData) => {
-//     console.log(movieData)
-//     $('.container').html(`
-//       <h2> ${movieData.Title} </h2>
-//       <h3> ${movieData.Year} </h3>
-//       <h4> ${movieData.Rated} <h4>
-//       <h5> ${movieData.Genre} <h5>
-//       <p>  ${movieData.Plot} </p>
-//       `)
-//       const $img = $('<img>').attr('src', movieData.Poster).attr('alt', movieData.Title)
-//       $('.container').append($img)
-//   }, (error) => {
-//     console.error(error)
-//   })
-// }
 
 //sidebar functions
 function openNav() {
