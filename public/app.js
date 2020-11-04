@@ -1,5 +1,117 @@
 console.log("app.js connected")
 
+
+ //socket.io instantiation
+const io = require("socket.io")(server)
+
+
+//listen on every connection
+io.on('connection', (socket) => {
+	console.log('New user connected')
+
+	//default username
+	socket.username =  'Stranger'
+
+    //listen on change_username
+    socket.on('change_username', (data) => {
+        socket.username = data.username
+    })
+
+    //listen on new_message
+    socket.on('new_message', (data) => {
+        //broadcast the new message
+        io.sockets.emit('new_message', {message : data.message, username : socket.username});
+    })
+
+    //listen on typing
+    socket.on('typing', (data) => {
+    	socket.broadcast.emit('typing', {username : socket.username})
+    })
+
+
+
+$(document).ready(function(){
+
+
+    let cl = (value) => console.log(value);
+    cl("Jquery Active")
+
+     let userName = ''
+    let defaultName = userName || 'Stranger'
+const $tellplayer=  document.getElementById("tellPlayer")
+const $gameScene1 = document.getElementsByClassName("gameScene1")
+const $gameScene2 = document.getElementsByClassName("gameScene2")
+const $titleScene = document.getElementsByClassName("titleScene")
+const $gameOverScene = document.getElementsByClassName("gameOverScene")
+
+function showTitleScene() {
+$($titleScene).show()
+ $($gameScene1).hide()   //HIDE ENTIRE DIV
+ $($gameScene2).hide() 
+ $($gameOverScene).hide()
+}
+
+function showFeed() {
+    $(".titleScene").hide()
+    $(".gameScene1").fadeIn(400).show()
+    $(".gameScene2").hide()
+    $(".gameOverScene").hide()
+    console.log("btn2")
+    // $(".navbar").animate({ scrollBottom: $(document).height() }, -1000);
+    // // NEED AUTOSCROLL TO BOTTOM OF MESSAGES
+    //   });
+}
+
+$(".btn1").click(function btn1(){ //TITLE SCREEN
+    $(".titleScene").fadeIn(700).show().css("color","green")
+    $(".gameScene1").hide()
+    $(".gameScene2").hide()
+    $(".gameOverScene").hide()
+    $(".titleScene").css("background-image",url("public/back.jpg"))
+    console.log("btn1")
+       });
+
+$(".btn2").click(function btn2(){ //Game Scene 1
+    $(".titleScene").hide()
+    $(".gameScene1").fadeIn(400).show()
+    $(".gameScene2").hide()
+    $(".gameOverScene").hide()
+    console.log("btn2")
+    tobottom()
+    // NEED AUTOSCROLL TO BOTTOM OF MESSAGES
+      });
+    
+    
+$(".btn3").click(function btn3(){ //Game Scene 2
+    $(".titleScene").hide()
+    $(".gameScene1").hide()
+    $(".gameScene2").show().css("color","black")
+    $(".gameOverScene").hide()
+    console.log("btn3")
+   
+    });
+$(".btn4").click(function btn4(){ //Game Over Scene
+    $(".titleScene").hide()
+    $(".gameScene1").hide()
+    $(".gameScene2").hide()
+    $(".gameOverScene").fadeIn(700).show().css("color","green")
+    console.log("btn4")
+    });  
+$(".btn5").click(function btn5(){ //Game Over Scene
+     $(".titleScene").hide()
+     $(".gameScene1").show().css("color","green")
+    $(".gameScene2").hide()
+     $(".gameOverScene").hide()
+     console.log("btn5")
+        });  
+  
+function tobottom(){
+	$('html, body').animate({scrollTop:$(document).height()}, 'slow');
+
+}
+
+})
+
 // const baseURL = `http://www.omdbapi.com/?`
 // const apiKey = `apikey=53aa2cd6` //backticks
 // // ff05b1a8 MINE
@@ -7,13 +119,6 @@ console.log("app.js connected")
 // let titleQuery = 'fight club'
 // let queryURL = baseURL + apiKey + '&' + queryType
 
-           
-// $(".like button").on("click", function() {
-//   var $count = $(this).parent().find('.count');
-//   $count.html($count.html() * 1 + 1);
-//   if ($count > 5) {('.count').css("color","green") }
-  
-// }); 
 
 
 
@@ -29,6 +134,7 @@ console.log("app.js connected")
 //       <h5> ${movieData.Genre} <h5>
 //       <p>  ${movieData.Plot} </p>
 //       `)
+//       console.log(movieData.Title)
 //       const $img = $('<img>').attr('src', movieData.Poster).attr('alt', movieData.Title)
 //       $('.container').append($img)
 //   }, (error) => {
@@ -36,29 +142,14 @@ console.log("app.js connected")
 //   })
 // }
 
-
-
-
-// $(()=> {
-//   getMovie()
-
-//   $('form').on('submit', (event) => {
-//     event.preventDefault()
-//     console.log('clicky')
-//     titleQuery = $('input[type="text"]').val()
-//     getMovie()
-//   })
-
-//   console.log(queryURL)
-// })
-
-// $('.btn-counter').on('click', function(event, count) {
-//   event.preventDefault();
+//sidebar functions
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
   
-//   var $this = $(this),
-//       count = $this.attr('data-count'),
-//       active = $this.hasClass('active'),
-//       multiple = $this.hasClass('multiple-count');
-  
- 
-// });
+  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }

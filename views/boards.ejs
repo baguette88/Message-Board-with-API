@@ -2,35 +2,40 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>New MESSAGE PAGE</title>
+        <title>Board Selection</title>
         <link rel="stylesheet" href="/normalize.css">
         <link rel="stylesheet" href="/skeleton.css">
         <link rel="stylesheet" href="/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
     </head>
     <body>
-        <div class="container">
-            <div class="banner">     <h1>Select a Board</h1></div>
-
-            DISPLAY boards
-            <li>Public Board</li>
-           <li>Create Private</li>
-           <li>My Boards</li>
-            -
+          <h1>Board Selection</h1>
+         <div class="dropdown">
+  <span>Select a Board</span>
+  <div class="dropdown-content">
+    <p><a href="/messages"> Public Chat </a></p>
+  </div>
+</div>
+<br>
+ <h2>  Create a new Board </h2>
         <form action="/messages" method="POST">
-            User: <input type="text" name="user" /><br/>
-            Message: <input type="text" name="message" /><br/>
-            SuperUser: <input type="checkbox" name="superUser" /><br/>
-            <input type="submit" name="" value="boards"/>
-        </form>
+            Name: <input type="text" name="user" default="${Stranger} has enterd the chat" /> <br>
+            Message: <input type="text" name="message" default="${userName} has enterd the chat" /><br/>
+              Board: <input type="text" name="board" /><br/>
+       <input type="submit" name="" value="Open Board"/>
 
-
-        <h1>New Message page</h1>
-        <form action="/messages" method="POST">
-            User: <input type="text" name="user" /><br/>
-            Message: <input type="text" name="message" /><br/>
-            SuperUser: <input type="checkbox" name="superUser" /><br/>
-            <input type="submit" name="" value="boards"/>
+              <ul>
+              <li> <a href="/messages"> Public Chat (fix) </a> </li>
+                <li> <a href="/messages"> MyFeed </a> </li>
+              </ul>    
+           
+     
         </form>
+    </body>
+    </div>
+
+    
     </div>
     </body>
 </html>
