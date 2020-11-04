@@ -4,9 +4,8 @@ const messageSchema = new mongoose.Schema({
   message:   { type: String, required: true },
   user:  { type: String, required: true },
   likes:  { type: Number, default: 0 },
-  //  level:  { type: Number, default: 1 },
+  // level:  { type: String, required: true },
   // superUser: Boolean,
-    board: {type: String, default: 'public'}
 }, {timestamps: true});
 
 const Message = mongoose.model('Message', messageSchema)
@@ -15,7 +14,15 @@ const Message = mongoose.model('Message', messageSchema)
 module.exports = Message
 
 
+// const mongoose = require('mongoose')
 
+// const messageSchema = new mongoose.Schema({
+//   message:  { type: String, required: true },
+//   user:  { type: String, required: true },
+//   superUser: Boolean,
+// }, {timestamps: true});
+
+// const Fruit = mongoose.model('Fruit', fruitSchema)
 
 
 

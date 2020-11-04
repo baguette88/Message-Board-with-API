@@ -3,70 +3,54 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-           <link rel="stylesheet" href="/normalize.css">
-        <link rel="stylesheet" href="/skeleton.css">
-        <link rel="stylesheet" href="/style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
-     
-    <div class="container" style="height: 50%;">
-      <!-- <form action="/action_page.php"> -->
-        <div class="row">
-          <br>
-          <h2 style="text-align:center"> QuaranTeam </h2>
-     
-          <label id="lblGreetings"></label>
-
-          <script>
-              let myDate = new Date();
-              let hrs = myDate.getHours();
-          
-              let greet;
-          
-              if (hrs < 12)
-                  greet = 'Good Morning, Jeffrey!';
-              else if (hrs >= 12 && hrs <= 17)
-                  greet = 'Good Afternoon, Jeffrey!';
-              else if (hrs >= 17 && hrs <= 24)
-                  greet = 'Good Evening, Jeffrey!';
-          
-              document.getElementById('lblGreetings').innerHTML =
-                  '<b>' + greet + '</b>';
-                      
-          </script> 
+        <div class="container">
+            <div class="banner">     <h1>LOGIN SCREEN</h1></div>
+            <div class="banner">     <h1>Jibber-Jabber</h1></div>
     
-          <div class="col">
-          
-    <form action="">
-            <input type="text" name="user" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password"  required>
-            <input type="submit" value="Login"><br>
-             <!-- socket.on('change_username', (data) => {
-              socket.username = data.username  -->
+            <form action="/messages" method="POST">
+                Username: <br> <input type="text" name="name" /><br/> 
+                <label for="password">Password:</label>
+                <!-- <input type="password" id="fname" name="fname"><br><br> -->
+                <input type="submit" name="name" value="Login as User"/>
+            <a href="/messages">Dev Login</a> <br>
+            <a href="/messages">Back to Index FIX LINK</a> <br>
+  
+ 
+            <form style="max-width:450px;margin:auto"> 
+                <h2>Login</h2> 
+                <div class="input-icons"> 
+                    <i class="fa fa-user icon"> 
+                  </i> 
+                    <input class="input-field" 
+                           type="text" 
+                           placeholder="Username"> 
+                </div> 
+      
+                <div class="input-icons"> 
+                    <i class="fa fa-envelope icon"> 
+                  </i> 
+                    <input class="input-field" 
+                           type="text"
+                           placeholder="Email"> 
+                </div> 
+      
+                <div class="input-icons"> 
+                    <i class="fa fa-key icon"> 
+                  </i> 
+                    <input class="input-field" 
+                           type="password"
+                           placeholder="Password"> 
+                </div> 
+            </form> 
+        </center> 
+            
          
-         </form>
-
-           
-    <div class="bottom-container">
-      <div class="row">
-        <div class="col">
-          <a href="/users/newuser" style="color:blue" class="btn">Sign up</a>
+            <a href="/messages/boards">Boards</a> <br>
+            
+            <a href="/messages">Dev Login</a> <br>
+        </nav>
         </div>
-        <div class="col">
-          <a href="/users/newuser" style="color:blue" class="btn">Forgot password?</a>
-        </div>
-      </div>
-    </div>
-        <!-- <button class=".btn5">Hack Mainframe</button> -->
-          </div>
-    
-        </div>
-
-    </div>
-
-            <a href="/messages/boards">HACK MAINFRAME</a> <br>
-     
-     
     </body>
 </html>
