@@ -58,6 +58,7 @@ $(".btn3").click(function btn3(){ //Game Scene 2
     $(".gameScene2").show().css("color","black")
     $(".gameOverScene").hide()
     console.log("btn3")
+    getMovie()
    
     });
 $(".btn4").click(function btn4(){ //Game Over Scene
@@ -73,11 +74,13 @@ $(".btn5").click(function btn5(){ //Game Over Scene
     $(".gameScene2").hide()
      $(".gameOverScene").hide()
      console.log("btn5")
+     getMovie()
         });  
   
 function tobottom(){
-	$('html, body').animate({scrollTop:$(document).height()}, 'slow');
-
+  $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+  getMovie()
+}
 const baseURL = `http://www.omdbapi.com/?`
 const apiKey = `apikey=53aa2cd6` //backticks
 // ff05b1a8 MINE
@@ -90,10 +93,11 @@ let queryURL = baseURL + apiKey + '&' + queryType
 
 const getMovie = () => {
   $.ajax({
+   
     url: queryURL + titleQuery
   }).then((movieData) => {
     console.log(movieData)
-    $('.container').html(`
+    $('.p').html(`
       <h2> ${movieData.Title} </h2>
       <h3> ${movieData.Year} </h3>
       <h4> ${movieData.Rated} <h4>
@@ -102,7 +106,7 @@ const getMovie = () => {
       `)
       console.log(movieData.Title)
       const $img = $('<img>').attr('src', movieData.Poster).attr('alt', movieData.Title)
-      $('.container').append($img)
+      $('.p').append('body')
   }, (error) => {
     console.error(error)
   })
@@ -119,4 +123,3 @@ function openNav() {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
   }
-}

@@ -168,7 +168,8 @@ app.patch('/messages/:id', (req,res) => {
     if (err) {
       console.log(err)
     } else {
-      res.redirect(`/messages`)
+      // res.redirect(`/messages`)
+      console.log("post liked")
     }
   })
 })
