@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Messages = require('../models/messages.js')
-// const app = express.Router();
+const app = express.Router();
 let PORT2 = 3001
+
 
 // ROUTES //
 ///////////
@@ -137,97 +138,54 @@ router.patch('/messages/:id', (req,res) => {  ////LIKE BUTTON INCREMENT
 
 
 
-$(function(){
-    //make connection
- let socket = io.connect('http://localhost:3001')
-
- //buttons and input
- const message = $("#message")
- const username = $("#username")
- const send_message = $("#send_message")
- const send_username = $("#send_username")
- const chatroom = $("#chatroom")
- const feedback = $("#feedback")
- const ulz = $('.ulz')
-
- //Emit message
- send_message.click(function(){
-     socket.emit('new_message', {message : message.val()})
- })
-
- //Listen on new_message
- socket.on("new_message", (data) => {
-     feedback.html('');
-     message.val('');
-     chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
- })
-
- //Emit a username
- send_username.click(function(){
-     socket.emit('change_username', {username : username.val()})
- })
-
- //Emit typing
- message.bind("keypress", () => {
-     socket.emit('typing')
- })
-
- //Listen on typing
- socket.on('typing', (data) => {
-     "user is typing"
-     feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
- })
-});
 
 
+// // const express = require('express')  //REDUNDANT
+// // const router = express()                 // REDUNDANT
 
-
-// const express = require('express')  //REDUNDANT
-// const router = express()                 // REDUNDANT
-
-//set the template engine ejs
+// //set the template engine ejs
 // app.set('view engine', 'ejs')   //NEED FOR EJS???
 
-//middlewares
-// router.use(express.static('public')) //THROWS AN ERROR
+// //middlewares
+// // router.use(express.static('public')) //THROWS AN ERROR
 
-//routes
-// router.get('/', (req, res) => {
-// 	res.render('index')
+// //routes
+// // router.get('/', (req, res) => {
+// // 	res.render('index')
+// // })
+
+// //Listen on port 3000
+//  // PORT THROWING ERROR, USING PORT 2 UNTIL FIX IS FOUND
+//   server = app.listen(PORT2)
+// //  server.listen(PORT2, () => {
+// //     console.log('listening')
+// //   })
+// //socket.io instantiation
+// const io = require("socket.io")(server)
+
+
+// //listen on every connection
+// io.on('connection', (socket) => {
+// 	console.log('New user connected')
+
+// 	//default username
+// 	socket.username =  'Stranger'
+
+//     //listen on change_username
+//     socket.on('change_username', (data) => {
+//         socket.username = data.username
+//     })
+
+//     //listen on new_message
+//     socket.on('new_message', (data) => {
+//         //broadcast the new message
+//         io.sockets.emit('new_message', {message : data.message, username : socket.username});
+//     })
+
+//     //listen on typing
+//     socket.on('typing', (data) => {
+//     	socket.broadcast.emit('typing', {username : socket.username})
+//     })
 // })
-
-//Listen on port 3000
- // PORT THROWING ERROR, USING PORT 2 UNTIL FIX IS FOUND
-  server = app.listen(PORT2)
-//  server.listen(PORT2, () => {
-//     console.log('listening')
-//   })
-//socket.io instantiation
-const io = require("socket.io")(server)
-
-
-//listen on every connection
-io.on('connection', (socket) => {
-	console.log('New user connected')
-
-	//default username
-	socket.username =  'Stranger'
-
-    //listen on change_username
-    socket.on('change_username', (data) => {
-        socket.username = data.username
-    })
-
-    //listen on new_message
-    socket.on('new_message', (data) => {
-        //broadcast the new message
-        io.sockets.emit('new_message', {message : data.message, username : socket.username});
-    })
-
-    //listen on typing
-    socket.on('typing', (data) => {
-    	socket.broadcast.emit('typing', {username : socket.username})
-    })
-})
 
 module.exports = router;

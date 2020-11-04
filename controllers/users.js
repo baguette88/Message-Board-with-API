@@ -1,30 +1,21 @@
-const bcrypt = require('bcrypt');
-const express = require('express');
-const router = express.Router();
-const User = require('../models/users.js');
+ 
+// const bcrypt = require('bcrypt');
+// const express = require('express');
+// const users = express.Router();
+// const User = require('../models/users.js');
 
+// users.get('/new', (req, res) => {
+//   res.render('users/new.ejs', {
+//     currentUser: req.session.currentUser
+//   })
+// });
 
-router.get('/newuser', (req, res) => {
-    res.render('newuser.ejs', {
-      currentUser: req.session.currentUser
-    })
-  });
-  
-  router.post('/', (req, res) => {
-    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-    User.create(req.body, (err, createdUser) => {
-      console.log('user is created', createdUser)
-      res.redirect('/messages/login') // REDIRECTS BACK TO LOGIN
-    });
-  });
+// users.post('/', (req, res) => {
+//   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+//   User.create(req.body, (err, createdUser) => {
+//     console.log('user is created', createdUser)
+//     res.redirect('/')
+//   });
+// });
 
-  module.exports = users;
-
-  router.get('/retreive-session', (req, res) => {
-   if(req.session.anyProperty === "different string") {
-     console.log("match")
-     } else {
-    cl("strings don't match")
-    res.redirect('/')
-    }
-  });
+// module.exports = users;

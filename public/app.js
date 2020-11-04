@@ -1,9 +1,36 @@
 console.log("app.js connected")
+
+
+ //socket.io instantiation
+const io = require("socket.io")(server)
+
+
+//listen on every connection
+io.on('connection', (socket) => {
+	console.log('New user connected')
+
+	//default username
+	socket.username =  'Stranger'
+
+    //listen on change_username
+    socket.on('change_username', (data) => {
+        socket.username = data.username
+    })
+
+    //listen on new_message
+    socket.on('new_message', (data) => {
+        //broadcast the new message
+        io.sockets.emit('new_message', {message : data.message, username : socket.username});
+    })
+
+    //listen on typing
+    socket.on('typing', (data) => {
+    	socket.broadcast.emit('typing', {username : socket.username})
+    })
+
+
+
 $(document).ready(function(){
-
- 
-
-
 
 
     let cl = (value) => console.log(value);
@@ -54,7 +81,7 @@ $(".btn2").click(function btn2(){ //Game Scene 1
     // NEED AUTOSCROLL TO BOTTOM OF MESSAGES
       });
     
-    });
+    
 $(".btn3").click(function btn3(){ //Game Scene 2
     $(".titleScene").hide()
     $(".gameScene1").hide()
@@ -81,35 +108,39 @@ $(".btn5").click(function btn5(){ //Game Over Scene
 function tobottom(){
 	$('html, body').animate({scrollTop:$(document).height()}, 'slow');
 
-const baseURL = `http://www.omdbapi.com/?`
-const apiKey = `apikey=53aa2cd6` //backticks
-// ff05b1a8 MINE
-const queryType = `t=`
-let titleQuery = 'fight club'
-let queryURL = baseURL + apiKey + '&' + queryType
-
-
-
-
-const getMovie = () => {
-  $.ajax({
-    url: queryURL + titleQuery
-  }).then((movieData) => {
-    console.log(movieData)
-    $('.container').html(`
-      <h2> ${movieData.Title} </h2>
-      <h3> ${movieData.Year} </h3>
-      <h4> ${movieData.Rated} <h4>
-      <h5> ${movieData.Genre} <h5>
-      <p>  ${movieData.Plot} </p>
-      `)
-      console.log(movieData.Title)
-      const $img = $('<img>').attr('src', movieData.Poster).attr('alt', movieData.Title)
-      $('.container').append($img)
-  }, (error) => {
-    console.error(error)
-  })
 }
+
+})
+
+// const baseURL = `http://www.omdbapi.com/?`
+// const apiKey = `apikey=53aa2cd6` //backticks
+// // ff05b1a8 MINE
+// const queryType = `t=`
+// let titleQuery = 'fight club'
+// let queryURL = baseURL + apiKey + '&' + queryType
+
+
+
+
+// const getMovie = () => {
+//   $.ajax({
+//     url: queryURL + titleQuery
+//   }).then((movieData) => {
+//     console.log(movieData)
+//     $('.container').html(`
+//       <h2> ${movieData.Title} </h2>
+//       <h3> ${movieData.Year} </h3>
+//       <h4> ${movieData.Rated} <h4>
+//       <h5> ${movieData.Genre} <h5>
+//       <p>  ${movieData.Plot} </p>
+//       `)
+//       console.log(movieData.Title)
+//       const $img = $('<img>').attr('src', movieData.Poster).attr('alt', movieData.Title)
+//       $('.container').append($img)
+//   }, (error) => {
+//     console.error(error)
+//   })
+// }
 
 //sidebar functions
 function openNav() {
