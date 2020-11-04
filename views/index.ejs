@@ -2,30 +2,124 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>QuaranTeam</title>
 
     <link rel="stylesheet" href="/normalize.css">
     <link rel="stylesheet" href="/skeleton.css">
     <link rel="stylesheet" href="/style.css">
+    <meta http-equiv="Content-Type" const="text/html;charset=UTF-8" />
+    <link href="http://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" type="text/css">
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-4ZPLezkTZTsojWFhpdFembdzFudphhoOzIunR1wH6g1WQDzCAiPvDyitaK67mp0+" crossorigin="anonymous"> -->
-     <script src="/app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- <link href="lib/css/emoji.css" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   </head>
 
-  <br><br>
+     <div class="titleScene">
+       
+    
+    <div class="container" style="height: 50%;">
+      <!-- <form action="/action_page.php"> -->
+        <div class="row">
+          <br>
+          <h2 style="text-align:center"> QuaranTeam </h2>
+     
+          <label id="lblGreetings"></label>
 
-      
+          <script>
+              let myDate = new Date();
+              let hrs = myDate.getHours();
+          
+              let greet;
+          
+              if (hrs < 12)
+                  greet = 'Good Morning, Jeffrey!';
+              else if (hrs >= 12 && hrs <= 17)
+                  greet = 'Good Afternoon, Jeffrey!';
+              else if (hrs >= 17 && hrs <= 24)
+                  greet = 'Good Evening, Jeffrey!';
+          
+              document.getElementById('lblGreetings').innerHTML =
+                  '<b>' + greet + '</b>';
+                      
+          </script> 
+    
+          <div class="col">
+          
+    <form action="">
+            <input type="text" name="userName" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" suggested = "current-password"  required >
+            <input type="submit" value="Login"><br>
+             <!-- socket.on('change_username', (data) => {
+              socket.username = data.username  -->
+         
+         </form>
+
+           
+    <div class="bottom-container">
+      <div class="row">
+        <div class="col">
+          <a href="/messages/login" style="color:blue" class="btn">Sign up</a>
+        </div>
+        <div class="col">
+          <a href="/messages/login" style="color:blue" class="btn">Forgot password?</a>
+        </div>
+      </div>
+    </div>
+        <!-- <button class=".btn5">Hack Mainframe</button> -->
+          </div>
+    
+        </div>
+
+    </div>
+ 
+    </div>
+   
+   
+     <div class="gameOverScene">
+<br>
+<br>
+     Open Scene
+     Resources Page?
+     Add CodeNoodle
+     Add Contact Me section
+     <ul>
+
+      <li><a href= "https://noobcheck.netlify.app/" target="_blank" ><b>Trivia Game</b></a></li>
+      <li><a href= "https://codenoodle.netlify.app/" target="_blank" ><b>CodeNoodle</b></a></li>
+     
+    </ul> 
+
+
+     </div> 
+  
+
+
+  <div class="gameScene1">
+  <br><br>
+  
+  
+
+
+<div id="main">
+
+  <h2>QuaranTeam</h2>
+
+</div>
         <ul>
                  <%  let messageTotal = 0 %>
                  <%  let likesTotal = 0 %>
 
                  <% for(let i = 0; i < allMessages.length; i++) { %>
+                  <!-- SET CONDITIONAL FOR BOARD TAG   -->
     <li>   <!-- LI PRINTED EACH LOOP    -->
                     <%  messageTotal = messageTotal + 1 %>
                  <%    if (i%2) {  %>
@@ -34,69 +128,98 @@
                          <div class="container">
                   <%   }  %>
         
-
-           
-
+<!-- LINK TO USER? CURRENTLY JUST ALTERNATING    -->
                 <%    if (i%2) {  %>
                     <img src="icon2.png" style="float:left" alt="i%2 =true">
                  <%    } else { %>
                     <img src="icon3.png" style="float:left" alt="i%2 =false">
               <%   }  %>
-
               <a href="/messages/<%=allMessages[i].id %>">        <%=allMessages[i].user; %>:   </a>
               <div class="like" style="float:right">
                <form action="/messages/<%= allMessages[i].id %>?_method=PATCH" method="POST">
                 <button style= "color:red">       <input type="submit" value="Like" /><i class="fas fa-heart"></i> <%= allMessages[i].likes; %> </button></form > 
-              
-                   
-
+                              
               </div>
               <%=allMessages[i].message; %> <br>
-
+              
                     <span class="time-right">  <br>
                      <%=allMessages[i].createdAt; %> </span>
-
                
                 <% allMessages[i].likes %> <br>
-              
-
+            
             <br>
-
-        
+        <!-- DELETE MESSAGE    -->
              <button>
                 <form action="/messages/<%= allMessages[i].id %>?_method=DELETE" method="POST">
                     <input type="submit" value="DELETE"  />
                 </form> </button>  <span class="floaty" style="float:right">    <a href="/messages/<%=allMessages[i].id %>/edit">Edit</a></span>   
-
             </div>
-
-
-
      </li>
             <% } %>
 
         </ul>
-  
+
+     
+
+<!-- NEW MESSAGE    -->
+<div class="navbar">
+          <form action="/messages" method="POST" >
+              User: <input type="text" name="user" /><br/>
+              Message: <input type="text" name="message" maxlength="250" />
+              
+              <span class="highlighter">
+                    <input type="submit" name="" value="Send"/></span>
+           </form>
+   </div>
+
+  </div>
+    
+     <!-- NAVBAR TOP    -->
        <div class="navbarTop">
-       <h2> <a href="/messages/">Home</a>
-        <a href="#news">Contacts</a>
-        <a href="#contact">Preferences</a>
-        <a href="/messages/boards">Change Boards</a></h2>
-        Total Messages: <%= messageTotal %>   Total Likes: <%= likesTotal %>
+         <button class="openbtn" onclick="openNav()">&#9776;</i> Menu <i class="fas fa-arrow-circle-right"></i></button>
+       <!-- <button id="btn1" class="btn1">Login</button> -->
+        <button class="btn2"> Feed </button>
+        <button id="btn3" class="btn3">LiveChat</button>
+     <!--    <button id="btn4" class="btn4">Resources</button>  -->
+         <button> <a href="/messages/boards">Boards</a> <br> </button>
+        <!--    <button> <a href="/messages/boards/pinned">Pinned</a> <br> </button> -->
+          <button onclick="tobottom()"><i class="fas fa-angle-double-down"></i> To Bottom</button>
 
-       </div>
+       </div><!-- END FEED/BULLETINS    -->
 
-        <div class="navbar">
-
-
-            <form action="/messages" method="POST" >
-                User: <input type="text" name="user" /><br/>
-                Message: <input type="text" name="message" maxlength="250" />
-                <span class="highlighter">
-                      <input type="submit" name="" value="Send"/></span>
-                <!-- SuperUser: <input type="checkbox" name="superUser" /><br/> -->
+      
             
+     <div class="gameScene2">
 
-          </div>
+                <section id="chatroom">
+                
+                 ChatRoom <br>
+                    <br> 
+                    <br>
+                    </section>
+                    <section id="feedback" style="color:black"></section> 
+          <div class="bottom">
+                <section>
+                    <div id="change_username" >
+                  <input id="username" name="user" autocomplete="off" type="text" />
+                  <button id="send_username" type="button">Change username</button>
+                    </div>
+                  
+                  </section>
+              
+                  
+              
+                  <section id="input_zone" > 
+                    <input id="message" name="message" autocomplete="off" class="vertical-align" type="text" />
+                    <button id="send_message" class="vertical-align" type="button">Send</button>
+                  </section>
+              
+                
+
+                  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+                  <script src="app.js"></script>
+             
+</section>
+       </div>
     </body>
 </html>

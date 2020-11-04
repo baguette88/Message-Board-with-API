@@ -65,6 +65,15 @@ const Message = require('./models/messages.js')
 ///////////
 // INDEX //
 ///////////
+
+app.get('/messages/login', (req, res)=>{
+
+  res.render('login.ejs', {
+
+    })
+})
+
+
 app.get('/messages', (req, res)=>{
   Message.find({}, (error, allMessages)=>{
     res.render('index.ejs', {
@@ -75,17 +84,13 @@ app.get('/messages', (req, res)=>{
 
 app.get('/', (req, res)=>{   //INITIAL LOGIN
  
-    res.redirect('/messages')
+    res.redirect('/messages/login')
 
 })
 
 
 app.get('/messages/boards', (req, res)=>{
-  Message.find({}, (error, allMessages)=>{
-    res.render('/messages/boards', {
-      allMessages: allMessages
-      })
-  })
+  res.render('boards.ejs');
 })
 
 ///////
@@ -153,6 +158,7 @@ app.delete('/messages/:id', (req, res) => {
   Message.findByIdAndRemove(req.params.id, { useFindAndModify: false }, (err, data)=>{
     res.redirect('/messages') //redirect back to Message index
   })
+
 })
 
 ////CHANGE LIKES

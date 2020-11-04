@@ -78,7 +78,7 @@ h2 {
     -ms-border-radius: 25px;
     -o-border-radius: 25px;
     padding: 10px;
-    overflow: scroll;
+    height: 100%;
     margin-top:1rem;
     margin-bottom:1rem;
     padding-left:1rem;
