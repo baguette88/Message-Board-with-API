@@ -66,113 +66,113 @@ const Message = require('./models/messages.js')
 // INDEX //
 ///////////
 
-app.get('/messages/login', (req, res)=>{
+// app.get('/messages/login', (req, res)=>{
 
-  res.render('login.ejs', {
+//   res.render('login.ejs', {
 
-    })
-})
+//     })
+// })
 
 
-app.get('/messages', (req, res)=>{
-  Message.find({}, (error, allMessages)=>{
-    res.render('index.ejs', {
-      allMessages: allMessages
-      })
-  })
-})
+// app.get('/messages', (req, res)=>{
+//   Message.find({}, (error, allMessages)=>{
+//     res.render('index.ejs', {
+//       allMessages: allMessages
+//       })
+//   })
+// })
 
-app.get('/', (req, res)=>{   //INITIAL LOGIN
+// app.get('/', (req, res)=>{   //INITIAL LOGIN
  
-    res.redirect('/messages/login')
+//     res.redirect('/messages/login')
 
-})
+// })
 
 
-app.get('/messages/boards', (req, res)=>{
-  res.render('boards.ejs');
-})
+// app.get('/messages/boards', (req, res)=>{
+//   res.render('boards.ejs');
+// })
 
-///////
-//NEW//
-///////
-app.get('/messages/new', (req, res) => {
-  res.render('new.ejs');
-  //res.send('new') send string of new to test
-})
+// ///////
+// //NEW//
+// ///////
+// app.get('/messages/new', (req, res) => {
+//   res.render('new.ejs');
+//   //res.send('new') send string of new to test
+// })
 
-//////////
-//CREATE//
-///post///
-app.post('/messages/', (req, res)=>{    //Post is an express method to POST
-  if(req.body.userType === 'on'){ //if checked, req.body.readyToEat is set to 'on'
-    req.body.userType = true;
-  } else { //if not checked, req.body.readyToEat is undefined
-    req.body.userType = false;
-  }
-  Message.create(req.body, (error, createdMessage)=>{
-    res.redirect('/messages');
-  })
-})
+// //////////
+// //CREATE//
+// ///post///
+// app.post('/messages/', (req, res)=>{    //Post is an express method to POST
+//   if(req.body.userType === 'on'){ //if checked, req.body.readyToEat is set to 'on'
+//     req.body.userType = true;
+//   } else { //if not checked, req.body.readyToEat is undefined
+//     req.body.userType = false;
+//   }
+//   Message.create(req.body, (error, createdMessage)=>{
+//     res.redirect('/messages');
+//   })
+// })
 
-/////////////
-/// edit ////
-/////////////
-// app.get('/messages/:id/edit', (req, res)=>{
-  app.get('/messages/:id/edit', (req, res)=>{
-  Message.findById(req.params.id, (err, foundMessage)=>{ //find the Message
-      res.render('edit.ejs', 
-        { message: foundMessage, //pass in found message 
-      })
-  })
-})
+// /////////////
+// /// edit ////
+// /////////////
+// // app.get('/messages/:id/edit', (req, res)=>{
+//   app.get('/messages/:id/edit', (req, res)=>{
+//   Message.findById(req.params.id, (err, foundMessage)=>{ //find the Message
+//       res.render('edit.ejs', 
+//         { message: foundMessage, //pass in found message 
+//       })
+//   })
+// })
 
-///////////
-// update//
-///////////
-app.put('/messages/:id', (req, res)=>{
-  if(req.body.readyToEat === 'on'){
-      req.body.readyToEat = true;
-  } else {
-      req.body.readyToEat = false;
-  }
-  Message.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedModel)=> {
-    res.redirect('/messages');
-  })
-})
+// ///////////
+// // update//
+// ///////////
+// app.put('/messages/:id', (req, res)=>{
+//   if(req.body.readyToEat === 'on'){
+//       req.body.readyToEat = true;
+//   } else {
+//       req.body.readyToEat = false;
+//   }
+//   Message.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedModel)=> {
+//     res.redirect('/messages');
+//   })
+// })
 
-//////////
-// show///
-//////////
-app.get('/messages/:id', (req, res) =>{
-  Message.findById(req.params.id, (err, foundMessage)=>{
-    res.render('show.ejs', {
-      message: foundMessage,
-    })
-  })
-})
+// //////////
+// // show///
+// //////////
+// app.get('/messages/:id', (req, res) =>{
+//   Message.findById(req.params.id, (err, foundMessage)=>{
+//     res.render('show.ejs', {
+//       message: foundMessage,
+//     })
+//   })
+// })
 
-////////////
-// delete //
-app.delete('/messages/:id', (req, res) => {
-  Message.findByIdAndRemove(req.params.id, { useFindAndModify: false }, (err, data)=>{
-    res.redirect('/messages') //redirect back to Message index
-  })
+// ////////////
+// // delete //
+// app.delete('/messages/:id', (req, res) => {
+//   Message.findByIdAndRemove(req.params.id, { useFindAndModify: false }, (err, data)=>{
+//     res.redirect('/messages') //redirect back to Message index
+//   })
 
-})
+// })
 
-////CHANGE LIKES
-app.patch('/messages/:id', (req,res) => {
-  console.log(req.body)
-  Message.findByIdAndUpdate(req.params.id, {$inc: {'likes': +1}}, (err) => {
-    if (err) {
-      console.log(err)
-    } else {
-      // res.redirect(`/messages`)
-      console.log("post liked")
-    }
-  })
-})
+// ////CHANGE LIKES
+// app.patch('/messages/:id', (req,res) => {
+//   console.log(req.body)
+//   Message.findByIdAndUpdate(req.params.id, {$inc: {'likes': +1}}, (err) => {
+//     if (err) {
+//       console.log(err)
+//     } else {
+//       res.redirect(`/messages`)
+
+//     }
+//   })
+// })
 
 
 // the app running the server

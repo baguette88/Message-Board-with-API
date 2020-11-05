@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>QuaranTeam</title>
+        <title>Forum: CodeNoodle</title>
 
     <link rel="stylesheet" href="/normalize.css">
     <link rel="stylesheet" href="/skeleton.css">
@@ -25,7 +25,7 @@
 
      <div class="titleScene">
        
-    
+      
     <div class="container" style="height: 50%;">
       <!-- <form action="/action_page.php"> -->
         <div class="row">
@@ -111,7 +111,7 @@
 
 <div id="main">
 
-  <h2>QuaranTeam</h2>
+  <h2>CodeNoodle Forum</h2>
 
 </div>
         <ul>
@@ -176,15 +176,17 @@
     
      <!-- NAVBAR TOP    -->
        <div class="navbarTop">
-         <button class="openbtn" onclick="openNav()">&#9776;</i> Menu <i class="fas fa-arrow-circle-right"></i></button>
+       
        <!-- <button id="btn1" class="btn1">Login</button> -->
+       <button class="openbtn" onclick="openNav()">&#9776;</i> Menu <i class="fas fa-arrow-circle-right"></i></button>
         <button class="btn2"> Feed </button>
-        <button id="btn3" class="btn3">LiveChat</button>
+        <button id="btn3" class="btn3">API</button>
      <!--    <button id="btn4" class="btn4">Resources</button>  -->
          <button> <a href="/messages/boards">Boards</a> <br> </button>
         <!--    <button> <a href="/messages/boards/pinned">Pinned</a> <br> </button> -->
           <button onclick="tobottom()"><i class="fas fa-angle-double-down"></i> To Bottom</button>
 <button class=".btn5">Share Movie</button>
+<button><a href= "https://codenoodle.netlify.app/" target="_blank" ><b>CodeNoodle</b></a></button>
        </div><!-- END FEED/BULLETINS    -->
 
       
@@ -193,26 +195,21 @@
 
                 <section id="chatroom">
                 <p></p>
-                 ChatRoom <br>
+                 ChatRoom <br> <br>
+                 <div class="anchor">
                     <br> 
                     <br>
                     </section>
-                    <section id="feedback" style="color:black"></section> 
-          <div class="bottom">
-                <section>
-                    <div id="change_username" >
-                  <input id="username" name="user" autocomplete="off" type="text" />
-                  <button id="send_username" type="button">Change username</button>
-                    </div>
-                  
+                    
+            
+                   <form class="moviepick">
+    Search Movie: <input type="text" />
+ <input type="submit" name="SEARCH MOVIE" />
+  </form>
                   </section>
               
                   
               
-                  <section id="input_zone" > 
-                    <input id="message" name="message" autocomplete="off" class="vertical-align" type="text" />
-                    <button id="send_message" class="vertical-align" type="button">Send</button>
-                  </section>
               
                 
 
@@ -220,6 +217,7 @@
                   <script src="app.js"></script>
              
 </section>
+       </div>
        </div>
     </body>
 </html>

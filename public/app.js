@@ -58,7 +58,7 @@ $(".btn3").click(function btn3(){ //Game Scene 2
     $(".gameScene2").show().css("color","black")
     $(".gameOverScene").hide()
     console.log("btn3")
-    getMovie()
+    // getMovie()
    
     });
 $(".btn4").click(function btn4(){ //Game Over Scene
@@ -68,18 +68,18 @@ $(".btn4").click(function btn4(){ //Game Over Scene
     $(".gameOverScene").fadeIn(700).show().css("color","green")
     console.log("btn4")
     });  
-$(".btn5").click(function btn5(){ //Game Over Scene
+$(".btn5").click(function btn5(){ //MOvie
      $(".titleScene").hide()
      $(".gameScene1").show().css("color","green")
     $(".gameScene2").hide()
      $(".gameOverScene").hide()
      console.log("btn5")
-     getMovie()
+    //  getMovie()
         });  
   
 function tobottom(){
   $('html, body').animate({scrollTop:$(document).height()}, 'slow');
-  getMovie()
+  
 }
 const baseURL = `http://www.omdbapi.com/?`
 const apiKey = `apikey=53aa2cd6` //backticks
@@ -97,7 +97,7 @@ const getMovie = () => {
     url: queryURL + titleQuery
   }).then((movieData) => {
     console.log(movieData)
-    $('.p').html(`
+    $('.anchor').html(`
       <h2> ${movieData.Title} </h2>
       <h3> ${movieData.Year} </h3>
       <h4> ${movieData.Rated} <h4>
@@ -106,11 +106,25 @@ const getMovie = () => {
       `)
       console.log(movieData.Title)
       const $img = $('<img>').attr('src', movieData.Poster).attr('alt', movieData.Title)
-      $('.p').append('body')
+      $('.img').appendTo('.anchor')
   }, (error) => {
     console.error(error)
   })
 }
+
+$(()=> {
+  
+
+  $('.moviepick').on('submit', (event) => {
+    event.preventDefault()
+    console.log('clicky')
+    titleQuery = $('.moviepick input[type="text"]').val()
+    getMovie(titleQuery)
+  })
+
+  console.log(queryURL)
+})
+
 
 //sidebar functions
 function openNav() {
