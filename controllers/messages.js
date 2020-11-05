@@ -1,14 +1,22 @@
+// const app = express.Router();
 const express = require('express');
 const router = express.Router();
-const Messages = require('../models/messages.js')
-// const app = express.Router();
-let PORT2 = 3001
+// const express = require('express')  //REDUNDANT
+// const router = express()   
+ const Messages = require('../models/messages.js')
+const app = router
+// let PORT2 = 3001
+const PORT = process.env.PORT || 3000;
+
+const mongoose = require('mongoose')
+const methodOverride = require('method-override')
+const Message = require('../models/messages.js')
 
 // ROUTES //
 ///////////
 //LOGIN //
 ///////////
-router.get('/messages/login', (req, res)=>{
+router.get('/login', (req, res)=>{
   
     res.render('login.ejs', {
      
@@ -16,8 +24,8 @@ router.get('/messages/login', (req, res)=>{
   })
 ///////////
 //INDEX //
-///////////
-router.get('/messages', (req, res)=>{
+//////////
+router.get('/', (req, res)=>{
   Message.find({}, (error, allMessages)=>{
     res.render('index.ejs', {
       allMessages: allMessages
@@ -32,14 +40,14 @@ router.get('/messages', (req, res)=>{
 ///////////
 router.get('/', (req, res)=>{   //INITIAL LOGIN
  
-    res.redirect('/messages/login')
+    res.redirect('/login')
 
 })
 ///////////
 //BOARDS (GET) //
 ///////////
 
-router.get('/messages/boards', (req, res)=>{
+router.get('/boards', (req, res)=>{
  
     res.render('boards.ejs');
   
@@ -47,7 +55,7 @@ router.get('/messages/boards', (req, res)=>{
 ///////
 //NEW//
 ///////
-router.get('/messages/new', (req, res) => {
+router.get('/new', (req, res) => {
   res.render('new.ejs');
   //res.send('new') send string of new to test
 })
@@ -57,7 +65,7 @@ router.get('/messages/new', (req, res) => {
 ///////////////////
 //CREATE ACCOUNT//
 //////////////////
-router.get('/messages/newuser', (req, res) => {
+router.get('/newuser', (req, res) => {
     res.render('newuser.ejs');
     //res.send('new') send string of new to test
   })
@@ -65,7 +73,7 @@ router.get('/messages/newuser', (req, res) => {
 //////////
 //MAKE A POST//
 ///post///
-router.post('/messages/', (req, res)=>{    //Post is an express method to POST
+router.post('/', (req, res)=>{    //Post is an express method to POST
 
   Message.create(req.body, (error, createdMessage)=>{
     console.log("message created")
@@ -78,7 +86,7 @@ router.post('/messages/', (req, res)=>{    //Post is an express method to POST
 /// EDIT ////
 /////////////
 // router.get('/messages/:id/edit', (req, res)=>{
-  router.get('/messages/:id/edit', (req, res)=>{
+  router.get('/:id/edit', (req, res)=>{
   Message.findById(req.params.id, (err, foundMessage)=>{ //find the Message
       res.render('edit.ejs', 
         { message: foundMessage, //pass in found message 
@@ -108,7 +116,7 @@ router.put('/messages/:id', (req, res)=>{
 
 // show///
 //////////
-router.get('/messages/:id', (req, res) =>{
+router.get('/:id', (req, res) =>{
   Message.findById(req.params.id, (err, foundMessage)=>{
     res.render('show.ejs', {
       message: foundMessage,
@@ -124,7 +132,7 @@ router.delete('/messages/:id', (req, res) => {
   })
 })
 
-router.patch('/messages/:id', (req,res) => {  ////LIKE BUTTON INCREMENT
+router.patch('/:id', (req,res) => {  ////LIKE BUTTON INCREMENT
   console.log(req.body)
   Message.findByIdAndUpdate(req.params.id, {$inc: {'likes': +1}}, (err) => {
     if (err) {
@@ -191,7 +199,7 @@ router.patch('/messages/:id', (req,res) => {  ////LIKE BUTTON INCREMENT
 //middlewares
 // router.use(express.static('public')) //THROWS AN ERROR
 
-//routes
+
 // router.get('/', (req, res) => {
 // 	res.render('index')
 // })
@@ -229,5 +237,5 @@ router.patch('/messages/:id', (req,res) => {  ////LIKE BUTTON INCREMENT
 //     	socket.broadcast.emit('typing', {username : socket.username})
 //     })
 // })
-
+// 
 module.exports = router;
