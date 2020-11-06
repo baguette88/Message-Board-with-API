@@ -174,7 +174,7 @@ input[type="button"] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   text-align: center;
   font-size: 24px;
   font-weight: 600;
@@ -211,7 +211,7 @@ button.button-primary,
 input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
-  color: #FFF;
+  color: rgb(0, 0, 0);
   background-color: #002fff;
   border-color: #000000; }
 .button.button-primary:hover,
@@ -244,6 +244,7 @@ select {
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
   background-color: #fff;
   border: 1px solid #D1D1D1;
+  color: black;
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box; }
