@@ -57,6 +57,7 @@ router.get('/boards', (req, res)=>{
 ///////
 router.get('/new', (req, res) => {
   res.render('new.ejs');
+
   //res.send('new') send string of new to test
 })
 
@@ -103,7 +104,7 @@ router.post('/', (req, res)=>{    //Post is an express method to POST
 ///////////
 // UPDATE//
 ///////////
-router.put('/messages/:id', (req, res)=>{
+router.put('/:id', (req, res)=>{
   // if(req.body.readyToEat === 'on'){
   //     req.body.readyToEat = true;
   // } else {
@@ -126,7 +127,7 @@ router.get('/:id', (req, res) =>{
 
 ////////////
 // delete //
-router.delete('/messages/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   Message.findByIdAndRemove(req.params.id, { useFindAndModify: false }, (err, data)=>{
     res.redirect('/messages') //redirect back to Message index
   })

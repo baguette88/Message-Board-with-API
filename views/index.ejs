@@ -5,7 +5,7 @@
         <title>Forum: CodeNoodle</title>
 
     <link rel="stylesheet" href="/normalize.css">
-    <link rel="stylesheet" href="/skeleton.css">
+     <link rel="stylesheet" href="/skeleton.css">
     <link rel="stylesheet" href="/style.css">
     <meta http-equiv="Content-Type" const="text/html;charset=UTF-8" />
     <link href="http://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" type="text/css">
@@ -22,7 +22,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     // <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   </head>
-
+  <script>
+function tobottom(){
+  $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+  
+}
+tobottom() </script>
      <div class="titleScene">
        
       
@@ -30,27 +35,9 @@
       <!-- <form action="/action_page.php"> -->
         <div class="row">
           <br>
-          <h2 style="text-align:center"> QuaranTeam </h2>
+          <h2 style="text-align: center"> CodeNoodle <p style="font-size:100px">&#128540;</p> </h2>
      
-          <label id="lblGreetings"></label>
-
-          <script>
-              let myDate = new Date();
-              let hrs = myDate.getHours();
-          
-              let greet;
-          
-              if (hrs < 12)
-                  greet = 'Good Morning, Jeffrey!';
-              else if (hrs >= 12 && hrs <= 17)
-                  greet = 'Good Afternoon, Jeffrey!';
-              else if (hrs >= 17 && hrs <= 24)
-                  greet = 'Good Evening, Jeffrey!';
-          
-              document.getElementById('lblGreetings').innerHTML =
-                  '<b>' + greet + '</b>';
-                      
-          </script> 
+         
     
           <div class="col">
           
@@ -85,7 +72,19 @@
    
    
      <div class="gameOverScene">
-<br>
+<br>       <div class="navbarTop">
+       
+       <!-- <button id="btn1" class="btn1">Login</button> -->
+     
+       <button class="btn2"> <a href="/messages/new">New Post</a>  </button>
+        <!--    <button id="btn3" class="btn3">API</button>-->
+     <!--    <button id="btn4" class="btn4">Resources</button>  -->
+         <button> <a href="/messages/boards">Boards</a> <br> </button>
+        <!--    <button> <a href="/messages/boards/pinned">Pinned</a> <br> </button> -->
+          <button onclick="tobottom()"><i class="fas fa-angle-double-down"></i> To Bottom</button>
+   <!--<button class=".btn5">Share Movie</button>  -->
+<button><a href= "https://codenoodle.netlify.app/" target="_blank" ><b>CodeNoodle</b></a></button>
+       </div><!-- END FEED/BULLETINS    -->
 <br>
      Open Scene
      Resources Page?
@@ -148,11 +147,14 @@
                 <% allMessages[i].likes %> <br>
             
             <br>
+              <% allMessages[i].board %> <br>
         <!-- DELETE MESSAGE    -->
              <button>
                 <form action="/messages/<%= allMessages[i].id %>?_method=DELETE" method="POST">
                     <input type="submit" value="DELETE"  />
-                </form> </button>  <span class="floaty" style="float:right">    <a href="/messages/<%=allMessages[i].id %>/edit">Edit</a></span>   
+                </form> </button>  
+                
+                <span class="floaty" style="float:right">    <a href="/messages/<%=allMessages[i].id %>/edit">Edit</a></span>   
             </div>
      </li>
             <% } %>
@@ -168,7 +170,7 @@
               Message: <input type="text" name="message" maxlength="250" />
               
               <span class="highlighter">
-                    <input type="submit" name="" value="Send"/></span>
+              <input type="submit" name="" value="Send" onclick="tobottom()"/></span>
            </form>
    </div>
 
@@ -178,21 +180,34 @@
        <div class="navbarTop">
        
        <!-- <button id="btn1" class="btn1">Login</button> -->
-       <button class="openbtn" onclick="openNav()">&#9776;</i> Menu <i class="fas fa-arrow-circle-right"></i></button>
-        <button class="btn2"> Feed </button>
-        <button id="btn3" class="btn3">API</button>
+         <button onclick="tobottom()"><i class="fas fa-angle-double-down"></i> MyFeed</button>
+        <button class="btn2"> <a href="/messages/new">New Post</a>  </button>
+      <!--    <button id="btn3" class="btn3">API</button>-->
      <!--    <button id="btn4" class="btn4">Resources</button>  -->
          <button> <a href="/messages/boards">Boards</a> <br> </button>
         <!--    <button> <a href="/messages/boards/pinned">Pinned</a> <br> </button> -->
-          <button onclick="tobottom()"><i class="fas fa-angle-double-down"></i> To Bottom</button>
-<button class=".btn5">Share Movie</button>
+     
+<!--<button class=".btn5">Share Movie</button> -->
 <button><a href= "https://codenoodle.netlify.app/" target="_blank" ><b>CodeNoodle</b></a></button>
        </div><!-- END FEED/BULLETINS    -->
 
       
             
      <div class="gameScene2">
+     
+       <div class="navbarTop">
+       
+       <!-- <button id="btn1" class="btn1">Login</button> -->
 
+        <button class="btn2"> <a href="/messages/new">New Post</a>  </button>
+       <!--  <button id="btn3" class="btn3">API</button>-->
+     <!--    <button id="btn4" class="btn4">Resources</button>  -->
+         <button> <a href="/messages/boards">Boards</a> <br> </button>
+        <!--    <button> <a href="/messages/boards/pinned">Pinned</a> <br> </button> -->
+          <button onclick="tobottom()"><i class="fas fa-angle-double-down"></i> MyFeed</button>
+<!--<button class=".btn5">Share Movie</button> -->
+<button><a href= "https://codenoodle.netlify.app/" target="_blank" ><b>CodeNoodle</b></a></button>
+       </div><!-- END FEED/BULLETINS    -->
                 <section id="chatroom">
                 <p></p>
                  ChatRoom <br> <br>

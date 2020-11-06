@@ -2,35 +2,63 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>New MESSAGE PAGE</title>
+        <title>Boards </title>
+         
         <link rel="stylesheet" href="/normalize.css">
         <link rel="stylesheet" href="/skeleton.css">
         <link rel="stylesheet" href="/style.css">
     </head>
     <body>
-        <div class="container">
-            <div class="banner">     <h1>Select a Board</h1></div>
+   
+              <div class="navbarTop"> <h1>Boards</h1>    
+          
+          
+ 
+</div>
 
-            DISPLAY boards
-            <li>Public Board</li>
-           <li>Create Private</li>
-           <li>My Boards</li>
-            -
+<script>
+
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+
+</div>
+<br>    <div class="container">
+ <br> <br> <br> <a href="/messages">Back to Feed</a>
         <form action="/messages" method="POST">
+                       Board: <input type="text" name="board" /><br/>
             User: <input type="text" name="user" /><br/>
             Message: <input type="text" name="message" /><br/>
-            SuperUser: <input type="checkbox" name="superUser" /><br/>
-            <input type="submit" name="" value="boards"/>
-        </form>
 
-
-        <h1>New Message page</h1>
-        <form action="/messages" method="POST">
-            User: <input type="text" name="user" /><br/>
-            Message: <input type="text" name="message" /><br/>
-            SuperUser: <input type="checkbox" name="superUser" /><br/>
-            <input type="submit" name="" value="boards"/>
+            <input type="submit" name="" value="Post to New Board"/>
         </form>
+            <div class="dropdown">
+            <br> 
+  <button onclick="myFunction()" class="dropbtn">Select A Board</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="/messages">Public Chat</a>
+    <a href="#about">CSS</a>
+    <a href="#contact">HTML</a> 
+    <a href="#contact">Javascript</a>
     </div>
+       </div>
+   
+</div></div>
     </body>
 </html>

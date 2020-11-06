@@ -1,7 +1,23 @@
 * {
     font-size: 24px;
+    background-color:
+    
 }
 
+.bigred{
+  background-color: red;
+  padding: 20px, 20px;
+  color:white;
+  height: 100px;
+  width: 100px;
+  border-radius: 250%;
+  -webkit-border-radius: 250%;
+  -moz-border-radius: 250%;
+  -ms-border-radius: 250%;
+  -o-border-radius: 250%;
+  box-shadow: 3px 3px 5px 6px rgb(0, 0, 0);
+}
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 .input-icons i { 
   position: absolute; 
 } 
@@ -83,6 +99,10 @@ h2 {
     margin-bottom:1rem;
     padding-left:1rem;
     padding-right:1rem;
+    background-image: linear-gradient(white, rgb(94, 94, 94));
+    box-shadow: 3px 3px 5px 6px #ccc;
+    color: black;
+ 
 }
 img{
     width: 50px;
@@ -144,12 +164,13 @@ form:-ms-input-placeholder {
   /* Style time text */
   .time-right {
     float: right;
-    color: rgb(145, 145, 145);
+    color: rgb(75, 75, 75);
+    font-size: 18px;
   }
   
   /* Style time text */
   .time-left {
-    float: left;
+    float: bottom;
     color:rgb(145, 145, 145);
   }
 
@@ -162,23 +183,36 @@ body {margin:0;}
 
 .navbar {
 
-  background-color:rgb(94, 197, 238);
+  background-image: linear-gradient(blue, darkblue);
   color: black;
   position: relative;
   float:bottom;
   width: 100%;
   padding-top: 5px; 
   padding-bottom: -30px; 
+  color: white;
 }
 
 .navbarTop {
+  background-image: linear-gradient(blue, darkblue);
   padding-top: -20px;
-    overflow: hidden;
-    background-color: rgb(94, 197, 238);;
+    overflow: auto;
+    background-color:black;
+    color: white;
     position: fixed;
     top: 0;
     width: 100%;
+    border: 2px solid black;
+    z-index: 10;
 
+  }
+.navbarTop-button {
+  color: green;
+}
+
+  @media (max-width: 960px) {
+    nav ul     { display: none; }
+    button { display: inline; }
   }
 
 .navbar a {
@@ -193,7 +227,7 @@ body {margin:0;}
 
 .navbar a:hover {
   background: #ddd;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .main {
@@ -212,9 +246,10 @@ head {
 
 
 .dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  padding: 16px, 16px;
+  border: 2px solid white;
   font-size: 24px;
   border: none;
   float: right'
@@ -224,6 +259,7 @@ head {
 .dropdown {
   position: relative;
   display: inline-block;
+  z-index: 99999999;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -251,7 +287,7 @@ head {
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: #858585;}
 
 
 
@@ -291,50 +327,11 @@ p { padding-left: 10px; }
   line-height: 18px;
   padding: 0 8px;
   position: relative;
-
+  box-shadow: 3px 3px 5px 6px #ccc;
   font-size: 12px;
   text-decoration: none;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
-/*
- * Counter button style
- */
-.btn-counter { margin-right: 39px; }
-.btn-counter:after,
-.btn-counter:hover:after { text-shadow: none; }
-.btn-counter:after {
-  border-radius: 3px;
-  border: 1px solid #050505;
-  background-color: rgb(158, 230, 248);
-  padding: 0 8px;
-  color: #777;
-  content: attr(data-count);
-  left: 100%;
-  margin-left: 8px;
-  margin-right: -13px;
-  position: absolute;
-  top: -1px;
-}
-.btn-counter:before {
-  transform: rotate(45deg);
-  filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476, sizingMethod='auto expand');
-
-  background-color: #eee;
-  border: 1px solid #000000;
-  border-right: 0;
-  border-top: 0;
-  content: '';
-  position: absolute;
-  right: -13px;
-  top: 5px;
-  height: 6px;
-  width: 6px;
-  z-index: 1;
-  zoom: 1;
-}
-/*
- * Custom styles
- */
 
  
  $fade-grey: #ededed;
@@ -356,4 +353,44 @@ html, body {
 
 .like {
   padding-right: 25px;
+}
+
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }

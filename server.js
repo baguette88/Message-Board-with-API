@@ -23,6 +23,7 @@ app.use(express.json());  // allows us to recognize the incoming request as a JS
 app.use(express.urlencoded({extended: false})); //  recognize the incoming object as strings or arrays.
 app.use(express.static(__dirname + '/public'));  // ???
 app.use(methodOverride('_method'))
+
 app.use('/messages', messagesController)
 
 //Port

@@ -3,54 +3,41 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+          <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/skeleton.css">
+    <link rel="stylesheet" href="/style.css">
     </head>
     <body>
-        <div class="container">
-            <div class="banner">     <h1>LOGIN SCREEN</h1></div>
-            <div class="banner">     <h1>Jibber-Jabber</h1></div>
+        <div class="container"> <label id="lblGreetings"></label>
+               CodeNoodle Forum
+     
+   
+          <script>
+              let myDate = new Date();
+              let hrs = myDate.getHours();
+          
+              let greet;
+          
+              if (hrs < 12)
+                  greet = 'Good Morning, Jeffrey!';
+              else if (hrs >= 12 && hrs <= 17)
+                  greet = 'Good Afternoon, Jeffrey!';
+              else if (hrs >= 17 && hrs <= 24)
+                  greet = 'Good Evening, Jeffrey!';
+          
+              document.getElementById('lblGreetings').innerHTML =
+                  '<b>' + greet + '</b>';
+                      
+          </script> 
     
             <form action="/messages" method="POST">
-                Username: <br> <input type="text" name="name" /><br/> 
+        <label for="UserName">Username:</label>     <input type="text" name="name" /><br/> 
                 <label for="password">Password:</label>
-                <!-- <input type="password" id="fname" name="fname"><br><br> -->
+               <input type="password" id="fname" name="fname"><br>
                 <input type="submit" name="name" value="Login as User"/>
-            <a href="/messages">Dev Login</a> <br>
-            <a href="/messages">Back to Index FIX LINK</a> <br>
-  
- 
-            <form style="max-width:450px;margin:auto"> 
-                <h2>Login</h2> 
-                <div class="input-icons"> 
-                    <i class="fa fa-user icon"> 
-                  </i> 
-                    <input class="input-field" 
-                           type="text" 
-                           placeholder="Username"> 
-                </div> 
-      
-                <div class="input-icons"> 
-                    <i class="fa fa-envelope icon"> 
-                  </i> 
-                    <input class="input-field" 
-                           type="text"
-                           placeholder="Email"> 
-                </div> 
-      
-                <div class="input-icons"> 
-                    <i class="fa fa-key icon"> 
-                  </i> 
-                    <input class="input-field" 
-                           type="password"
-                           placeholder="Password"> 
-                </div> 
-            </form> 
-        </center> 
-            
-         
-            <a href="/messages/boards">Boards</a> <br>
-            
-            <a href="/messages">Dev Login</a> <br>
-        </nav>
-        </div>
+        <br>   <button class="bigred" type=""> <a href="/messages">
+        
+     <br>  <br> <br> HACK MAINFRAME</a> </button><br>
+         </div>
     </body>
 </html>

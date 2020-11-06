@@ -159,9 +159,9 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #100975; }
+  color: #353131; }
 a:hover {
-  color: rgb(0, 0, 0); }
+  color: rgb(85, 177, 10); }
 
 
 /* Buttons
@@ -183,7 +183,7 @@ input[type="button"] {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  background-color: rgb(42, 81, 255);
+  background-color: rgb(94, 115, 212);
   border-radius: 4px;
   border: 2px solid black;
   cursor: pointer;
