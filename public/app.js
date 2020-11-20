@@ -27,9 +27,7 @@ function showFeed() {
     $(".gameScene2").hide()
     $(".gameOverScene").hide()
     console.log("btn2")
-    // $(".navbar").animate({ scrollBottom: $(document).height() }, -1000);
-    // // NEED AUTOSCROLL TO BOTTOM OF MESSAGES
-    //   });
+
 }
 
 $(".btn1").click(function btn1(){ //TITLE SCREEN
